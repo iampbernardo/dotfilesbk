@@ -7,6 +7,9 @@ My dotfiles ( Configuration files )
 
 Feel free to use them in your own system
 
+Files you will find:
+
+* .vimrc ( VIM Configuration file )
 
 
 How to use:
