@@ -13,40 +13,57 @@
 
 " Remove vi syntax compatibility
 set nocompatible
+"syntax on
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
 " Pathogen enable
+
+
+"call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 "call pathogen#incubate()
-"call pathogen#helptags()
+
+
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles
+" Colorschemes
+Bundle 'flazz/vim-colorschemes'
+Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+" Sass syntax
+Bundle 'cakebaker/scss-syntax.vim'
+" Snipmate ( Snippets)
+Bundle 'msanders/snipmate.vim'
+"Zen Coding
+Bundle 'mattn/zencoding-vim'
+" Tabular
+Bundle 'godlygeek/tabular'
+" CSS Colors
+Bundle 'ap/vim-css-color'
+
+
+"syntax enable
+filetype plugin indent on
+syntax on
+
+" Powerline
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+
 
 " Markdown gets auto textwidth
 au Bufread,BufNewFile *.md set textwidth=79 filetype=markdown
 au Bufread,BufNewFile *.markdown set textwidth=79 filetype=markdown
-
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-
-set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" My Bundles
-
-Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
-" Sass syntax
-Bundle 'cakebaker/scss-syntax.vim'
-
-
 " Enable line numbers
 set number
 " Enable syntax
-if has("syntax")
-    syntax on
-    filetype on
-    filetype plugin on
-endif
+"filetype on
+"filetype plugin on
 
 " Use , as leader key
 let mapleader = ","
@@ -59,18 +76,24 @@ set cc=80
 " Set NO visualbells ( Obvious right? )
 set novisualbell
 " You can be fast, dude !!!
-set timeoutlen=600
+"set timeoutlen=600
 " ---------------------------------------------------------------------------
 " GUI OPTIONS
 " ---------------------------------------------------------------------------
+set t_Co=256
+
+
+
+
 
 " Disable some GUI options
 set guioptions-=T
 " And add some other ones
 set guioptions=aAc
 " Colours
-colorscheme TronLegacy
+colorscheme 3dglasses
 set background=dark
+syntax on
 " Font
 set guifont=DejaVu\ Sans\ Mono\ 12
 "set guifont=Inconsolata\ Medium\ 15
@@ -91,19 +114,19 @@ set noswapfile
 
 
 "" Function for whitespaces
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+"function! <SID>StripTrailingWhitespaces()
+"    " Preparation: save last search, and cursor position.
+"    let _s=@/
+"    let l = line(".")
+"    let c = col(".")
     " Do the business:
-    %s/\s\+$//e
+"    %s/\s\+$//e
     " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
+"    let @/=_s
+"    call cursor(l, c)
+"endfunction
 
-autocmd BufWritePre *.php,*.css,*.js :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre *.php,*.css,*.js :call <SID>StripTrailingWhitespaces()
 
 
 " ---------------------------------------------------------------------------
@@ -112,8 +135,8 @@ autocmd BufWritePre *.php,*.css,*.js :call <SID>StripTrailingWhitespaces()
 set smartindent
 set autoindent
 set backspace=indent,eol,start
-set ts=4 sts=4 sw=4
 set expandtab
+set ts=4 sts=4 sw=4
 
 " ---------------------------------------------------------------------------
 " SEARCH
@@ -128,12 +151,12 @@ set incsearch
 " REMAPS
 " ---------------------------------------------------------------------------
 
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+"if exists(":Tabularize")
+"  nmap <Leader>a= :Tabularize /=<CR>
+"  vmap <Leader>a= :Tabularize /=<CR>
+"  nmap <Leader>a: :Tabularize /:\zs<CR>
+"  vmap <Leader>a: :Tabularize /:\zs<CR>
+"endif
 
 
 noremap <F12> <Esc>:syntax sync fromstart<CR>
@@ -153,6 +176,9 @@ nnoremap <leader>q gqip
 nnoremap <leader>ft Vatzf
 " See Open Buffers
 nnoremap <leader>bu :buffers<CR>
+" Normal moving in wrapped lines
+nnoremap j gj
+nnoremap k gk
 
 "/* INSERT MODE */
 " Save with Ctrl + S
@@ -183,22 +209,24 @@ noremap <Right> <nop>
 " EXTRA
 " ---------------------------------------------------------------------------
 "Autoload $MYVIMRC file on save
-autocmd bufwritepost .vimrc source $MYVIMRC
-autocmd bufread * source $MYVIMRC
+autocmd bufwritepost .vimrc :source $MYVIMRC
+"autocmd BufEnter * :syntax sync fromstart
+"autocmd BufEnter * :syntax enable 
+"autocmd BufEnter * :source $MYVIMRC
 
 "PHP Syntax Autocomplete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " Wordpress highlight
-autocmd BufEnter *.php :set syn=wordpress
+"autocmd BufEnter *.php :set syn=wordpress
 
 
 "Color Syntax inspector
 
 " Show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+"nmap <C-S-P> :call <SID>SynStack()<CR>
+"function! <SID>SynStack()
+"  if !exists("*synstack")
+"    return
+"  endif
+"  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+"endfunc
