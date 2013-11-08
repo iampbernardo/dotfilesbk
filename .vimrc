@@ -41,7 +41,7 @@ Bundle 'fisadev/vim-debug.vim'
 " Colorschemes
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 " Better file browser
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 " Code commenter
 Bundle 'scrooloose/nerdcommenter'
 " Class/module browser
@@ -57,7 +57,7 @@ Bundle 'motemen/git-vim'
 " Tab list panel
 Bundle 'kien/tabman.vim'
 " Airline
-Bundle 'bling/vim-airline'
+"Bundle 'bling/vim-airline'
 " Consoles as buffers
 Bundle 'rosenfeld/conque-term'
 " Pending tasks list
@@ -239,10 +239,10 @@ nmap ,f :CtrlPLine<CR>
 nmap ,m :CtrlPMRUFiles<CR>
 nmap ,c :CtrlPCmdPalette<CR>
 " to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text,ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    call feedkeys(a:search_text)
-endfunction
+"function! CtrlPWithSearchText(search_text,ctrlp_command_end)
+"    execute ':CtrlP' . a:ctrlp_command_end
+"    call feedkeys(a:search_text)
+"endfunction
 " CtrlP with default text
 "nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
 "nmap ,wG :call CtrlPWithSearchText(expand('<cword>'),'BufTagAll')<CR>
