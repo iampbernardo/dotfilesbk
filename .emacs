@@ -17,16 +17,54 @@
  '(line-number-mode nil)
  '(menu-bar-mode nil)
  '(nyan-mode t)
+ (require 'package)
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.milkbox.net/packages/")
-     ("marmalade" . "http://marmalade-repo.org/packages/"))))
+     ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ (add-to-list 'package-archives
+	      '("marmalade" .
+		"http://marmalade-repo.org/packages/"))
+(package-refresh-contents)
+
+(defun install-if-needed (package)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+;; make more packages available with the package installer
+(setq to-install
+      '(python-mode magit yasnippet jedi auto-complete autopair find-file-in-repository))
+
+(mapc 'install-if-needed to-install)
+
 
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
 
+(require 'auto-complete)
+(require 'autopair)
+(require 'flymake)
+(require 'yasnippet)
 
+(global-set-key [f7] 'find-file-in-repository)
+
+;; auto-complete mode extra settings
+(setq
+ ac-auto-start 2
+ ac-override-local-map nil
+ ac-use-menu-map t
+ ac-candidate-limit 20)
+
+
+;; Python mode settings
+(require 'python-mode)
+(add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+(setq py-electric-colon-active t)
+(add-hook 'python-mode-hook 'autopair-mode)
+(add-hook 'python-mode-hook 'yas-minor-mode)
+
+;; Jedi Settings
+(require 'jedi)
 
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
