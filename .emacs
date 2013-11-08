@@ -8,13 +8,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'package)
 (package-initialize)
-<<<<<<< HEAD
 (add-to-list 'package-archives
          '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
          '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-=======
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,7 +38,6 @@
  (add-to-list 'package-archives
 	      '("marmalade" .
 		"http://marmalade-repo.org/packages/"))
->>>>>>> 524d0d8c0a29f73869b4007e8543f5dfb70d60e7
 (package-refresh-contents)
 
 (defun install-if-needed (package)
@@ -50,16 +46,12 @@
 
 ;; make more packages available with the package installer
 (setq to-install
-<<<<<<< HEAD
       '(python-mode magit yasnippet jedi sublime-themes auto-complete autopair find-file-in-repository))
 
 (mapc 'install-if-needed to-install)
-=======
       '(python-mode magit yasnippet jedi auto-complete autopair find-file-in-repository))
 
 (mapc 'install-if-needed to-install)
-
->>>>>>> 524d0d8c0a29f73869b4007e8543f5dfb70d60e7
 
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
@@ -71,29 +63,20 @@
 
 (global-set-key [f7] 'find-file-in-repository)
 
-<<<<<<< HEAD
 ; auto-complete mode extra settings
-=======
-;; auto-complete mode extra settings
->>>>>>> 524d0d8c0a29f73869b4007e8543f5dfb70d60e7
 (setq
  ac-auto-start 2
  ac-override-local-map nil
  ac-use-menu-map t
  ac-candidate-limit 20)
 
-<<<<<<< HEAD
-;; ;; Python mode settings
-=======
 
 ;; Python mode settings
->>>>>>> 524d0d8c0a29f73869b4007e8543f5dfb70d60e7
 (require 'python-mode)
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (setq py-electric-colon-active t)
 (add-hook 'python-mode-hook 'autopair-mode)
 (add-hook 'python-mode-hook 'yas-minor-mode)
-<<<<<<< HEAD
 
 ;; ;; Jedi settings
 (require 'jedi)
@@ -113,11 +96,8 @@
             (local-set-key "\C-cd" 'jedi:show-doc)
             (local-set-key (kbd "M-SPC") 'jedi:complete)
             (local-set-key (kbd "M-.") 'jedi:goto-definition)))
-=======
-
 ;; Jedi Settings
 (require 'jedi)
->>>>>>> 524d0d8c0a29f73869b4007e8543f5dfb70d60e7
 
 ;; Flymake settings for Python
 (defun flymake-python-init ()
