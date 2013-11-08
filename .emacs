@@ -1,6 +1,8 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
+         '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
          '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
          '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -13,7 +15,7 @@
 
 ;; make more packages available with the package installer
 (setq to-install
-      '(python-mode magit yasnippet jedi auto-complete autopair find-file-in-repository))
+      '(python-mode magit yasnippet jedi circe nyan-mode sublime-themes auto-complete autopair find-file-in-repository))
 
 (mapc 'install-if-needed to-install)
 
@@ -38,13 +40,6 @@
  
 
 ;; make more packages available with the package installer
-(setq to-install
-      '(python-mode magit yasnippet jedi sublime-themes auto-complete autopair find-file-in-repository))
-
-(mapc 'install-if-needed to-install)
-      '(python-mode magit yasnippet jedi auto-complete autopair find-file-in-repository))
-
-(mapc 'install-if-needed to-install)
 
 (require 'magit)
 (global-set-key "\C-xg" 'magit-status)
