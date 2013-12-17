@@ -13,7 +13,7 @@
 " no vi-compatible
 set nocompatible
 
-" Autoinstalamos NeoBundle
+" Autoinstalando NeoBundle
 let iCanHazNeoBundle=1
 let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
 if !filereadable(neobundle_readme)
@@ -30,32 +30,9 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand($HOME.'/.vim/bundle/'))
 
-" Se autocarga
+" dejemos que NeoBundle administre a NeoBundle (necesario!)
 NeoBundle 'Shougo/neobundle.vim'
-
-
-" Setting up Vundle - the vim plugin bundler
-"let iCanHazVundle=1
-"let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-"if !filereadable(vundle_readme)
-"    echo "Installing Vundle..."
-"    echo ""
-"    silent !mkdir -p ~/.vim/bundle
-"    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-"    let iCanHazVundle=0
-"endif
-
-" required for vundle
-filetype off
-
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-
-
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" }}}
 
 " Bundles from GitHub repos:
 Bundle 'Shougo/unite.vim'
