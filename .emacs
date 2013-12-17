@@ -14,7 +14,7 @@
 
 ;; make more packages available with the package installer
 (setq to-install
-      '(python-mode magit yasnippet jedi auto-complete autopair find-file-in-repository))
+      '(python-mode magit pep8 linum hlinum yasnippet jedi jinja2-mode auto-complete autopair find-file-in-repository))
 
 (mapc 'install-if-needed to-install)
 
@@ -26,7 +26,10 @@
 (require 'flymake)
 (require 'yasnippet)
 
-(global-set-key [f7] 'find-file-in-repository)
+
+;; Special keys mapping
+(global-set-key [f7] 'find-file-in-repository) ;; Finds in repository
+(global-set-key [f8] 'pep8)  ;; Check PEP8 rules in Python files
 
 ; auto-complete mode extra settings
 (setq
@@ -39,8 +42,11 @@
 (require 'python-mode)
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (setq py-electric-colon-active t)
+(add-hook 'python-mode-hook '(lambda() (require 'virtualenv)))
 (add-hook 'python-mode-hook 'autopair-mode)
 (add-hook 'python-mode-hook 'yas-minor-mode)
+(add-hook 'python-mode-hook 'pylint-flymake-mode)
+(add-hook 'python-mode-hook 'pep8-flymake-mode)
 
 ;; ;; Jedi settings
 (require 'jedi)
@@ -94,9 +100,10 @@
 
 (add-hook 'python-mode-hook 'flymake-activate)
 (add-hook 'python-mode-hook 'auto-complete-mode)
+(add-hook 'python-mode-hook 'pep8-flymake-mode)
 
 (ido-mode t)
-
+(linum-mode t)
 ;; -------------------- extra nice things --------------------
 ;; use shift to move around windows
 (windmove-default-keybindings 'shift)
@@ -111,6 +118,8 @@
  '(custom-enabled-themes (quote (molokai)))
  '(custom-safe-themes (quote ("47583b577fb062aeb89d3c45689a4f2646b7ebcb02e6cb2d5f6e2790afb91a18" default)))
  '(menu-bar-mode nil)
+ '(setq make-backup-files nil)
+ '(hlinum-activate t)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces

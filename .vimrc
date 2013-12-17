@@ -13,33 +13,74 @@
 " no vi-compatible
 set nocompatible
 
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
+" Autoinstalamos NeoBundle
+let iCanHazNeoBundle=1
+let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
+if !filereadable(neobundle_readme)
+    echo "Installing NeoBundle.."
     echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+    silent !mkdir -p $HOME/.vim/bundle
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    let iCanHazNeoBundle=0
 endif
+
+" Llama a NeoBundle
+if has('vim_starting')
+    set rtp+=$HOME/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+
+" Se autocarga
+NeoBundle 'Shougo/neobundle.vim'
+
+
+" Setting up Vundle - the vim plugin bundler
+"let iCanHazVundle=1
+"let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+"if !filereadable(vundle_readme)
+"    echo "Installing Vundle..."
+"    echo ""
+"    silent !mkdir -p ~/.vim/bundle
+"    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+"    let iCanHazVundle=0
+"endif
 
 " required for vundle
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+
+
 
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
 
 " Bundles from GitHub repos:
+Bundle 'Shougo/unite.vim'
+
+" Unite sources
+Bundle 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+Bundle 'Shougo/unite-session', {'autoload':{'unite_sources':'session',
+            \ 'commands' : ['UniteSessionSave', 'UniteSessionLoad']}}
+Bundle 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+Bundle 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
+            \ 'colorscheme'}}
+Bundle 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+Bundle 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
+            \ ['history/command', 'history/search']}}
+Bundle 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
+            \ 'filetype', }}
+Bundle 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
+            \ ['quickfix', 'location_list']}}
+Bundle 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
+Bundle 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
 
 " Python and PHP Debugger
 Bundle 'fisadev/vim-debug.vim'
 " Colorschemes
-Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+Bundle 'joedicastro/vim-molokai256'
 " Better file browser
 "Bundle 'scrooloose/nerdtree'
 " Code commenter
@@ -134,6 +175,7 @@ set shiftwidth=4
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType c setlocal tabstop=2 noexpandtab
 
 " always show status bar
 set ls=2
@@ -314,7 +356,7 @@ let g:tabman_focus = 'tf'
 if has('gui_running')
     colorscheme wombat
 else
-    colorschem Darkside
+    colorschem molokai256
 endif
 
 " when scrolling, keep cursor 3
