@@ -1,14 +1,8 @@
 "
-"                       __   _(_)_ __ ___  _ __ ___
-"                       \ \ / / | '_ ` _ \| '__/ __|
-"                        \ V /| | | | | | | | | (__
-"                       (_)_/ |_|_| |_| |_|_|  \___|
+" Author: Pablo Bernardo
+" Twitter: @voylinux
+" Blog: http://elkarmadelteclado.com
 "
-" Author: joe di castro <joe@joedicastro.com>
-" Source: http://github.com/joedicastro/dotfiles/tree/master/vim
-"
-" Este archivo esta sujeto a cambios frecuentes. Conviene seguir los commits en
-" el control de versiones.
 
 " Establecer lenguaje {{{ ====================================================
 
