@@ -25,6 +25,6 @@ Clone this repository and create simbolic links from the files to your personal 
 <br/>
 `ln -s ~/dotfiles/.vimrc ~/.vimrc`
 `ln -s ~/dotfiles/.emacs ~/.emacs`
-`ln -s ~/dotfiles/pylint/pytlint.rc ~/pylint.rc`
+`ln -s ~/dotfiles/pylint/pytlint.rc ~/.pylint.rc`
 
 ## Enjoy!!
