@@ -16,6 +16,7 @@ Files you will find:
 
 * .vimrc ( VIM Configuration file )
 * .emacs ( Emacs configuration file )
+* bash/.bashrc ( Bash configuration file )
 * pylint/pylint.rc ( Pylint configuration file )
 How to use:
 
