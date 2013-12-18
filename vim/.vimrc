@@ -828,7 +828,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Po.vim {{{ -----------------------------------------------------------------
 
-let g:po_translator = "joe di castro <joe@joedicastro.com>"
+let g:po_translator = "Pablo Bernardo <voylinux@gmail.com>"
 
 " }}}
 
