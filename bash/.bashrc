@@ -63,6 +63,17 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# ===================================================
+# Custom
+# ===================================================
+# Enable Powerline if exists
+if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+fi
+
+
+
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -116,8 +127,9 @@ fi
 export WORKON_HOME=~/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
+export LUA_PPREFIX=/usr/bin/lua
 
-# ============================================================================
+#============================================================================
 # Custom functions
 # ============================================================================
 command_exists () {

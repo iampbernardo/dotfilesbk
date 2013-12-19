@@ -399,6 +399,10 @@ inoremap <right> <nop>
 " }}}
 
 " Esquema de color {{{ -------------------------------------------------------
+"Set enable the route for Powerline
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/ 
+" Allways show statusline
+set laststatus=2
 
 syntax on                      " Habilita el resaltado de sintaxis.
 set background=dark            " Establece el fondo oscuro.
@@ -408,6 +412,7 @@ if has('gui_running')          " Habilita el tema molokai para gvim y vim.
 else
     colorscheme molokai256
 endif
+
 
 " }}}
 
