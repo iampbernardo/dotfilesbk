@@ -9,3 +9,5 @@
 	ui = true
 [push]
 	default = matching
+[credential]
+	helper = cache
