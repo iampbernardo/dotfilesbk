@@ -1,0 +1,9 @@
+[user]
+	name = voylinux
+	email = voylinux@gmail.com
+[core]
+	editor = vim
+[commit]
+	template = /home/pablo/.gitmessage.txt
+[color]
+	ui = true
