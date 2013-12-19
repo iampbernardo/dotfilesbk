@@ -239,7 +239,11 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 " GUI {{{
 
 " Barra de estado mas elegante y efectiva
-NeoBundle 'joedicastro/vim-powerline'
+"NeoBundle 'joedicastro/vim-powerline'
+
+" Vim airline
+NeoBundle 'bling/vim-airline'
+
 " permite des/hacer un zoom a ventana completa de uno de las ventanas
 NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
             \{'commands' : 'ZoomWinTabToggle'}}
@@ -308,6 +312,21 @@ set lazyredraw                  " Redibuja solo cuando es necesario.
 set autoread                    " Actualiza cambios realizados fuera de vim.
 set ttimeoutlen=0               " Conmuta instantaneamente entre modos
 set backspace=indent,eol,start  " Definir el comportamiento de tecla Backspace
+
+" }}}
+
+" Título automático de la ventana de VIM {{{ ---------------------
+
+set title
+let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+if &term == "screen"
+    set t_ts=^[k
+    set t_fs=^[\
+endif
+if &term == "screen" || &term == "xterm"
+    set title 
+endif
+
 
 " }}}
 
@@ -787,6 +806,14 @@ autocmd FileType git set nofoldenable
 
 " }}}
 
+" Mercurial (Vim-mercenary) {{{ ---------------------------------
+
+" Manage Mercurial reposiries from VIM
+NeoBundle 'phleet/vim-mercenary'
+
+
+" }}}
+
 " Gundo {{{ ------------------------------------------------------------------
 
 nnoremap <Leader>u :GundoToggle<CR>
@@ -837,14 +864,9 @@ let g:po_translator = "Pablo Bernardo <voylinux@gmail.com>"
 
 " }}}
 
-" Powerline {{{ --------------------------------------------------------------
+" Vim airline {{{ -----------------------------------------------------------
 
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_file = $HOME.'/.vim/tmp/Powerline.cache'
-
-set noshowmode
-
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+let g:airline#extensions#tabline#enabled = 1
 
 " }}}
 
