@@ -1,0 +1,7 @@
+# Mercurial configuration file
+
+# Credentials
+[ui]
+username = voylinux <voylinux@gmail.com>
+editor = vim
+ssh = ssh -C
