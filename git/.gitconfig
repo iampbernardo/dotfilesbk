@@ -3,6 +3,8 @@
 	email = voylinux@gmail.com
 [core]
 	editor = vim
+[diff]
+    tool =  vim
 [commit]
 	template = ~/.gitmessage.txt
 [color]
