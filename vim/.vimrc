@@ -398,10 +398,11 @@ set softtabstop=4              " Un Tabulado de cuatro espacios.
 set autoindent                 " Establece el autoindentado.
 
 " set wrap
-set textwidth=80
+set textwidth=0
 " set formatoptions=qrn1
 set colorcolumn=+1
-
+" set column
+set colorcolumn=80
 " }}}
 
 " Hagamos las cosas bien, fuera teclas de desplazamiento {{{ -----------------
