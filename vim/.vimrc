@@ -880,10 +880,14 @@ let g:pymode_lint_ignore = ''
 let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
 
 let g:pymode_rope = 1
-let g:pymode_rope_goto_def_newwin = 'new'
-let g:pymode_rope_guess_project = 0
-let g:pymode_rope_vim_completion = 1
-let g:pymode_rope_always_show_complete_menu = 1
+
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 1
+"let g:pymode_rope_goto_def_newwin = 'new'
+"let g:pymode_rope_guess_project = 0
+"let g:pymode_rope_vim_completion = 1
+"let g:pymode_rope_always_show_complete_menu = 1
 
 " }}}
 
