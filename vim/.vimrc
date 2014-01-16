@@ -236,6 +236,15 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 
 " }}}
 
+"
+" JS {{{
+
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
+            \ {'filetypes': ['js']}}
+
+
+" }}}
+
 " GUI {{{
 
 " Barra de estado mas elegante y efectiva
@@ -721,6 +730,14 @@ nnoremap Y y$
 
 " }}}
 
+" Mantener el curson centrado vericalmente {{{
+
+set scrolloff=999
+noremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" }}}
+
+
 " FIN CONFIGURACIÓN VIM }}}
 
 " CONFIGURACIÓN DE PLUGINS {{{ ===============================================
@@ -880,10 +897,14 @@ let g:pymode_lint_ignore = ''
 let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
 
 let g:pymode_rope = 1
-let g:pymode_rope_goto_def_newwin = 'new'
-let g:pymode_rope_guess_project = 0
-let g:pymode_rope_vim_completion = 1
-let g:pymode_rope_always_show_complete_menu = 1
+
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 1
+"let g:pymode_rope_goto_def_newwin = 'new'
+"let g:pymode_rope_guess_project = 0
+"let g:pymode_rope_vim_completion = 1
+"let g:pymode_rope_always_show_complete_menu = 1
 
 " }}}
 
