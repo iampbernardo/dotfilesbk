@@ -236,6 +236,15 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 
 " }}}
 
+"
+" JS {{{
+
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
+            \ {'filetypes': ['js']}}
+
+
+" }}}
+
 " GUI {{{
 
 " Barra de estado mas elegante y efectiva
@@ -720,6 +729,14 @@ endif
 nnoremap Y y$
 
 " }}}
+
+" Mantener el curson centrado vericalmente {{{
+
+set scrolloff=999
+noremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" }}}
+
 
 " FIN CONFIGURACIÓN VIM }}}
 
