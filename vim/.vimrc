@@ -229,7 +229,7 @@ NeoBundleLazy 'Rykka/colorv.vim', {'autoload' : {
                              \ 'ColorVScheme', 'ColorVSchemeFav',
                              \ 'ColorVSchemeNew', 'ColorVTurn2'],
             \ }}
-NeoBundleLazy 'othree/html5.vim', {'autoload':
+NeoBundleLazy 'mattn/emmet-vim', {'autoload':
             \ {'filetypes': ['html', 'xhttml', 'css']}}
 NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
             \ {'filetypes': ['html', 'xhttml', 'css']}}
