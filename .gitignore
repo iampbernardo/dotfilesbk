@@ -1,0 +1,5 @@
+*.log
+config.autosave
+default.theme
+*~
+
