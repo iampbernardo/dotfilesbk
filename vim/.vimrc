@@ -92,6 +92,10 @@ NeoBundleLazy 'sjl/badwolf', { 'autoload' :
 NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
+" Temas variados
+NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+
 
 " Temas claros
 NeoBundleLazy 'vim-scripts/summerfruit256.vim', { 'autoload' :
@@ -239,8 +243,12 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 "
 " JS {{{
 
-NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
-            \ {'filetypes': ['js']}}
+"NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
+"            \ {'filetypes': ['javascript']}}
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload': 
+            \ {'filetypes': ['javascript']}}
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload': 
+            \ {'filetypes': ['javascript']}}
 
 
 " }}}
