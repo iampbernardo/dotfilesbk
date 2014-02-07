@@ -92,8 +92,8 @@ NeoBundleLazy 'sjl/badwolf', { 'autoload' :
 NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
-" Temas variados
-NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
+" Solarized
+NeoBundleLazy 'altercation/vim-colors-solarized', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
 
