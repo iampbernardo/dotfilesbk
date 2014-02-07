@@ -240,7 +240,6 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 
 " }}}
 
-"
 " JS {{{
 
 "NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
@@ -249,6 +248,9 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':
             \ {'filetypes': ['javascript']}}
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload': 
             \ {'filetypes': ['javascript']}}
+NeoBundleLazy 'wookiehangover/jshint.vim', {'autoload': 
+            \ {'filetypes': ['javascript']}}
+
 
 
 " }}}

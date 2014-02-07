@@ -1,0 +1,4 @@
+"Vimperator configuration file
+" Author: Pablo Bernardo @voylinux
+
+silent qmark g http://google.com
