@@ -286,6 +286,14 @@ NeoBundle 'mattn/webapi-vim'
 
 " }}}
 
+" NERDTree {{{
+
+NeoBundle 'scrooloose/nerdtree'
+
+
+
+" }}}
+
 " FIN BUNDLES }}}
 
 " Instalar los plugins automaticamente {{{
@@ -740,10 +748,17 @@ nnoremap Y y$
 
 " }}}
 
-" Mantener el curson centrado vericalmente {{{
+" Mantener el cursor centrado vericalmente {{{
 
 set scrolloff=999
 noremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" }}}
+
+" NERDTree  {{{
+
+noremap <Leader>n :NERDTreeToggle<CR>
+
 
 " }}}
 
