@@ -92,8 +92,11 @@ NeoBundleLazy 'sjl/badwolf', { 'autoload' :
 NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
-" Solarized
-NeoBundleLazy 'altercation/vim-colors-solarized', { 'autoload' :
+" Temas variados
+NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+" Temas variados
+NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
 
@@ -762,6 +765,10 @@ noremap <Leader>n :NERDTreeToggle<CR>
 
 " }}}
 
+" Usar kj como ESC : Salir a normal mode {{{
+:inoremap kj <Esc>
+
+" }}}
 
 " FIN CONFIGURACIÓN VIM }}}
 
