@@ -6,5 +6,4 @@ setxkbmap -layout us,es -variant altgr-intl, -option grp:menu_toggle -option grp
 assign [class="Firefox"] 1
 
 #Autostart
-exec /etc/opt/firefox/firefox
 exec --no-startup-id nitrogen --restore
