@@ -66,12 +66,6 @@ unset color_prompt force_color_prompt
 # ===================================================
 # Custom
 # ===================================================
-# Enable Powerline if exists
-if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-fi
-
-
 
 
 # If this is an xterm set the title to user@host:dir

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+setxkbmap -layout us,es -variant altgr-intl, -option grp:menu_toggle -option grp_led:scroll -option ctrl:nocaps
+
+#workspace assignment
+assign [class="Firefox"] 1
+
+#Autostart
+exec /etc/opt/firefox/firefox
+exec --no-startup-id nitrogen --restore
