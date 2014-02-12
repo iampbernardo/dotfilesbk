@@ -770,6 +770,15 @@ noremap <Leader>n :NERDTreeToggle<CR>
 
 " }}}
 
+" Navegar por tabs {{{
+
+nmap <silent> <C-k> :tabn<CR>
+nmap <silent> <C-j> :tabp<CR>
+imap <silent> <C-k> <esc><C-n>
+imap <silent> <C-j> <esc><C-p>
+
+" }}}
+
 " FIN CONFIGURACIÓN VIM }}}
 
 " CONFIGURACIÓN DE PLUGINS {{{ ===============================================
@@ -1669,6 +1678,11 @@ let g:winresizer_keycode_finish = 27
 " zoomwintab {{{
 
 map <Leader>z :ZoomWinTabToggle<CR>
+
+" }}}
+
+" NERDTree {{{
+
 
 " }}}
 
