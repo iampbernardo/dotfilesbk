@@ -159,6 +159,8 @@ bar {
 
 # NetworkManager applet
 exec --no-startup-id nm-applet
+# Volume control
+exec --no-startup-id volumeicon
 
 #Bloqueo de pantalla
 bindsym $MOD+SHIFT+x exec i3lock -c 333333
