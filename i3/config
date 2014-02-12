@@ -157,8 +157,11 @@ bar {
 
 # show tray icons on the primary monitor
 
-# NetworkManage applet
+# NetworkManager applet
 exec --no-startup-id nm-applet
+
+#Bloqueo de pantalla
+bindsym $MOD+SHIFT+x exec i3lock -c 333333
 
 #autostart
 exec ~/.i3/autostart
