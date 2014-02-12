@@ -87,28 +87,14 @@ NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen',
 NeoBundle 'joedicastro/vim-molokai256'
 
 NeoBundle 'tomasr/molokai'
+
 NeoBundleLazy 'sjl/badwolf', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
-" Temas variados
-NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-" Temas variados
-NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-
-
-" Temas claros
-NeoBundleLazy 'vim-scripts/summerfruit256.vim', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
 NeoBundleLazy 'joedicastro/vim-github256', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
-
-" Crear temas para terminal a partir de temas para GUI
-NeoBundleLazy 'godlygeek/csapprox', { 'autoload' :
-        \ { 'commands' : ['CSApprox', 'CSApproxSnapshot']}}
 
 " }}}
 
