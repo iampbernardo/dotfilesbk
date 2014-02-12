@@ -153,12 +153,5 @@ bar {
         tray_output primary
 }
 
-
-
-# show tray icons on the primary monitor
-
-# NetworkManage applet
-exec --no-startup-id nm-applet
-
 #autostart
 exec ~/.i3/autostart
