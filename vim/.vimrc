@@ -87,28 +87,14 @@ NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen',
 NeoBundle 'joedicastro/vim-molokai256'
 
 NeoBundle 'tomasr/molokai'
+
 NeoBundleLazy 'sjl/badwolf', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
 
-" Temas variados
-NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-" Temas variados
-NeoBundleLazy 'flazz/vim-colorschemes', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-
-
-" Temas claros
-NeoBundleLazy 'vim-scripts/summerfruit256.vim', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
 NeoBundleLazy 'joedicastro/vim-github256', { 'autoload' :
         \ { 'unite_sources' : 'colorscheme', }}
-
-" Crear temas para terminal a partir de temas para GUI
-NeoBundleLazy 'godlygeek/csapprox', { 'autoload' :
-        \ { 'commands' : ['CSApprox', 'CSApproxSnapshot']}}
 
 " }}}
 
@@ -767,6 +753,15 @@ noremap <Leader>n :NERDTreeToggle<CR>
 
 " Usar kj como ESC : Salir a normal mode {{{
 :inoremap kj <Esc>
+
+" }}}
+
+" Navegar por tabs {{{
+
+nmap <silent> <C-k> :tabn<CR>
+nmap <silent> <C-j> :tabp<CR>
+imap <silent> <C-k> <esc><C-n>
+imap <silent> <C-j> <esc><C-p>
 
 " }}}
 
@@ -1669,6 +1664,11 @@ let g:winresizer_keycode_finish = 27
 " zoomwintab {{{
 
 map <Leader>z :ZoomWinTabToggle<CR>
+
+" }}}
+
+" NERDTree {{{
+
 
 " }}}
 

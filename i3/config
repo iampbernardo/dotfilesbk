@@ -153,5 +153,20 @@ bar {
         tray_output primary
 }
 
+<<<<<<< HEAD
+=======
+
+
+# show tray icons on the primary monitor
+
+# NetworkManager applet
+exec --no-startup-id nm-applet
+# Volume control
+exec --no-startup-id volumeicon
+
+#Bloqueo de pantalla
+bindsym $MOD+SHIFT+x exec i3lock -c 333333
+
+>>>>>>> da04312a2b9b5d2f5c0fa805685d43e4642e7d7e
 #autostart
 exec ~/.i3/autostart

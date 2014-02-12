@@ -2,8 +2,11 @@
 
 setxkbmap -layout us,es -variant altgr-intl, -option grp:menu_toggle -option grp_led:scroll -option ctrl:nocaps
 
-#workspace assignment
-assign [class="Firefox"] 1
+# NetworkManage applet
+exec --no-startup-id nm-applet
+
+# Multimedia keys settings
+exec gnome-settings-daemon
 
 #Autostart
 exec --no-startup-id nitrogen --restore
