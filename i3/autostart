@@ -1,6 +1,6 @@
 #!/bin/sh
-
 setxkbmap -layout us,es -variant altgr-intl, -option grp:menu_toggle -option grp_led:scroll -option ctrl:nocaps
+
 
 # NetworkManage applet
 exec --no-startup-id nm-applet
