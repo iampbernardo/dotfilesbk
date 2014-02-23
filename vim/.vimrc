@@ -86,6 +86,8 @@ NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen',
 " Versión de molokai mejorada para terminal, casi identica a la de GUI
 NeoBundle 'joedicastro/vim-molokai256'
 
+NeoBundle 'daylerees/colour-schemes', { "rtp": "vim-themes/"}
+
 NeoBundle 'tomasr/molokai'
 
 NeoBundleLazy 'sjl/badwolf', { 'autoload' :
@@ -316,7 +318,7 @@ set go-=T                       " Elimina la barra de herramientas.
 set go-=m                       " Elimina el menú.
 set go+=rRlLbh                  " Activa todas las barras de desplazamiento.
 set go-=rRlLbh                  " Desactiva todas las barras de desplazamiento.
-set visualbell                  " Activa la alarma visual.
+set novisualbell                  " Activa la alarma visual.
 set cursorline                  " Resalta la linea bajo el cursor.
 set fillchars+=vert:│           " Mejora aspecto de la división de ventanas.
 set ttyfast                     " Mejora el redibujado de la pantalla.
@@ -454,7 +456,7 @@ endif
 
 " Fuente monoespaciada para gui {{{ ------------------------------------------
 
-set guifont=Dejavu\ Sans\ Mono\ for\ Powerline\ 11      " La fuente de texto para gvim.
+set guifont=Inconsolata\ medium\ 14      " La fuente de texto para gvim.
 
 " }}}
 
