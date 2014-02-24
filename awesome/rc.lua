@@ -217,7 +217,7 @@ for s = 1, screen.count() do
 end
 -- }}}
 
--- {{{ Wibox
+-- {{{ Wibox down
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -241,9 +241,9 @@ kbdcfg.widget:buttons(
  -- Add widget to your layout
 
 -- Initialize widget
--- memwidget = wibox.widget.textbox()
+memwidget = wibox.widget.textbox()
 -- Register widget 
--- vicious.register(memwidget, vicious.widgets.mem, " | RAM: $1% |", 13)
+vicious.register(memwidget, vicious.widgets.mem, " | RAM: $1% |", 13)
 
 
 -- Create a wibox for each screen and add it
@@ -314,7 +314,7 @@ for s = 1, screen.count() do
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
 
-   -- Add widgetsto the wibox
+   -- Add widgets to the wibox
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -326,9 +326,9 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(memwidget)
     -- if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
+    --right_layout:add(mytextclock)
     right_layout:add(kbdcfg.widget)
+    right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
@@ -394,6 +394,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+
+    awful.key({modkey,            }, "F1",     function () awful.screen.focus(1) end),
+    awful.key({modkey,            }, "F2",     function () awful.screen.focus(2) end),
+
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
