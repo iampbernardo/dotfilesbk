@@ -330,6 +330,7 @@ set lazyredraw                  " Redibuja solo cuando es necesario.
 set autoread                    " Actualiza cambios realizados fuera de vim.
 set ttimeoutlen=0               " Conmuta instantaneamente entre modos
 set backspace=indent,eol,start  " Definir el comportamiento de tecla Backspace
+set number
 
 " }}}
 
@@ -1670,6 +1671,8 @@ map <Leader>z :ZoomWinTabToggle<CR>
 " }}}
 
 " NERDTree {{{
+
+let NERDTreeShowHidden=1
 
 
 " }}}
