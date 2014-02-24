@@ -221,11 +221,29 @@ end
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+-- Keyboard map indicator and changer
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { { "us", "" }, { "es", "" } }
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = wibox.widget.textbox()
+kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][1] .. " ")
+kbdcfg.switch = function ()
+    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+    local t = kbdcfg.layout[kbdcfg.current]
+    kbdcfg.widget:set_text(" " .. t[1] .. " ")
+    os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+end 
+-- Mouse bindings
+kbdcfg.widget:buttons(
+     awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
+ )
+ -- Add widget to your layout
 
 -- Initialize widget
-memwidget = wibox.widget.textbox()
+-- memwidget = wibox.widget.textbox()
 -- Register widget 
-vicious.register(memwidget, vicious.widgets.mem, " | RAM: $1% |", 13)
+-- vicious.register(memwidget, vicious.widgets.mem, " | RAM: $1% |", 13)
 
 
 -- Create a wibox for each screen and add it
@@ -310,6 +328,7 @@ for s = 1, screen.count() do
     -- if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
+    right_layout:add(kbdcfg.widget)
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
@@ -330,6 +349,7 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
+
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
@@ -379,7 +399,8 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-
+    -- Alt + Right Shift switches the current keyboard layout
+    awful.key({modkey ,         }, "Shift_R", function () kbdcfg.switch() end),
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
