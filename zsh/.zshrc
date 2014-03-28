@@ -66,4 +66,7 @@ fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
+export WORKON_HOME=~/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
