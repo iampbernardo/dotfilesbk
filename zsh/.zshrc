@@ -57,12 +57,15 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
-else
-  export EDITOR='gvim'
+# else
+  # export EDITOR='gvim'
 fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+export EDITOR=/usr/bin/vim
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -70,3 +73,7 @@ export WORKON_HOME=~/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
+
+[ -z "$TMUX" ] && export TERM=xterm-256color
+
+alias tmux='tmux -2'
