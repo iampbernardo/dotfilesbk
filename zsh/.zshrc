@@ -70,7 +70,15 @@ export EDITOR=/usr/bin/vim
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export WORKON_HOME=~/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+# Debian based distributions
+   source /usr/local/bin/virtualenvwrapper.sh
+else
+# Archlinux
+   source /usr/bin/virtualenvwrapper.sh
+fi
+
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
 
