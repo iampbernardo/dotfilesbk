@@ -114,8 +114,8 @@ NeoBundleLazy 'joedicastro/vim-markdown-extra-preview'
 " Permite realizar un diff entre directorios
 NeoBundleLazy 'joedicastro/DirDiff.vim', { 'autoload': { 'commands' : 'DirDiff'}}
 " Edición hexadecimal
-NeoBundleLazy 'vim-scripts/hexman.vim', { 'autoload' :
-            \ { 'mappings' : [['ni', '<Plug>HexManager']]}}
+" NeoBundleLazy 'vim-scripts/hexman.vim', { 'autoload' :
+            " \ { 'mappings' : [['ni', '<Plug>HexManager']]}}
 
 " }}}
 
@@ -138,6 +138,8 @@ NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python'
 
 " Gestor de snippets avanzado y potente
 NeoBundle 'SirVer/ultisnips'
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips_my"]
 
 " }}}
 
