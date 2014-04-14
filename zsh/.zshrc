@@ -81,7 +81,10 @@ fi
 
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
-
 [ -z "$TMUX" ] && export TERM=xterm-256color
+
+# if [ -n "$DISPLAY" ]; then
+#     xset b off
+# fi
 
 alias tmux='tmux -2'
