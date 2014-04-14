@@ -78,22 +78,28 @@ NeoBundle 'daylerees/colour-schemes', { "rtp": "vim-themes/"}
 
 NeoBundle 'tomasr/molokai'
 
-NeoBundleLazy 'sjl/badwolf', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
+NeoBundle 'chriskempson/base16-vim'
 
-NeoBundleLazy 'joedicastro/vim-github256', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
+NeoBundle 'sjl/badwolf'
+
+NeoBundle 'nielsmadan/harlequin'
+
+NeoBundle 'joedicastro/vim-github256'
 
 " }}}
 
 " DCVS {{{
 "
+NeoBundle 'vim-scripts/vcscommand.vim'
+"
 " Para gestionar Git
 NeoBundle 'tpope/vim-fugitive'
 " Para señalar los cambios del archivo con respecto al repo Git
 NeoBundle 'airblade/vim-gitgutter'
+
+" Mercurial
+NeoBundle 'vim-scripts/hgrev'
+
 " Visor de Git
 NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
             \ 'autoload':{'commands':'Gitv'}}
@@ -221,15 +227,15 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 
 " JS {{{
 
-"NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
+"NeoBundleLazy 'pangloss/vim-javascript', {'autoload':
 "            \ {'filetypes': ['javascript']}}
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload': 
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':
             \ {'filetypes': ['javascript']}}
-NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload': 
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':
             \ {'filetypes': ['javascript']}}
-NeoBundleLazy 'wookiehangover/jshint.vim', {'autoload': 
+NeoBundleLazy 'wookiehangover/jshint.vim', {'autoload':
             \ {'filetypes': ['javascript']}}
-NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload': 
+NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':
             \ {'filetypes': ['javascript']}}
 
 
@@ -318,7 +324,7 @@ set hidden                      " Oculta los bufferes cerrados.
 set ruler                       " Establece una regla permanente.
 set lazyredraw                  " Redibuja solo cuando es necesario.
 set autoread                    " Actualiza cambios realizados fuera de vim.
-set ttimeoutlen=0               " Conmuta instantaneamente entre modos
+set ttimeoutlen=10               " Conmuta instantaneamente entre modos
 set backspace=indent,eol,start  " Definir el comportamiento de tecla Backspace
 set number
 
@@ -333,7 +339,7 @@ if &term == "screen"
     set t_fs=^[\
 endif
 if &term == "screen" || &term == "xterm"
-    set title 
+    set title
 endif
 
 
@@ -429,7 +435,7 @@ inoremap <right> <nop>
 
 " Esquema de color {{{ -------------------------------------------------------
 "Set enable the route for Powerline
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/ 
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " Allways show statusline
 set laststatus=2
 
@@ -439,7 +445,7 @@ set t_Co=256                   " Habilita 256 colores en modo consola.
 if has('gui_running')          " Habilita el tema molokai para gvim y vim.
     colorscheme molokai
 else
-    colorscheme molokai256
+    colorscheme badwolf
 endif
 
 
@@ -751,6 +757,12 @@ noremap <Leader>n :NERDTreeToggle<CR>
 
 " Navegar por tabs {{{
 
+
+
+nnoremap <C-Insert> :tabnew<CR>
+nnoremap <Leader>t  :tabnew<CR>
+
+
 nmap <silent> <C-k> :tabn<CR>
 nmap <silent> <C-j> :tabp<CR>
 imap <silent> <C-k> <esc><C-n>
@@ -905,6 +917,27 @@ let g:po_translator = "Pablo Bernardo <voylinux@gmail.com>"
 " Vim airline {{{ -----------------------------------------------------------
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+
+" Customization
+"===============
+
+" let g:airline_left_sep='>'
+" let g:airline_right_sep='<'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_iminsert=0
+let g:airline#extensions#branch#use_vcscommand = 1
+
+
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_theme='powerlineish'
 
 " }}}
 
