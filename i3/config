@@ -171,6 +171,7 @@ bar {
 
 }
 
+
 # Set screens and positions ( Custom per 
 # machine script )
 exec --no-startup-id ~/.setupscreen.sh
