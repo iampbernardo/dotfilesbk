@@ -78,13 +78,13 @@ NeoBundle 'daylerees/colour-schemes', { "rtp": "vim-themes/"}
 
 NeoBundle 'tomasr/molokai'
 
-NeoBundle 'chriskempson/base16-vim'
-
 NeoBundle 'sjl/badwolf'
 
 NeoBundle 'nielsmadan/harlequin'
 
 NeoBundle 'joedicastro/vim-github256'
+
+NeoBundle 'noahfrederick/vim-hemisu'
 
 " }}}
 
@@ -448,6 +448,7 @@ if has('gui_running')          " Habilita el tema molokai para gvim y vim.
     colorscheme molokai
 else
     colorscheme badwolf
+    let g:Powerline_symbols = 'unicode'
 endif
 
 
@@ -1106,5 +1107,11 @@ autocmd FileType markdown NeoBundleSource vim-markdown-extra-preview
 " }}}
 
 " FIN TIPOS DE ARCHIVO }}}
+
+" FUNCIONES PROPIAS {{{ ==============================================================
+
+nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>"
+
+" }}}
 
 " vim:foldmethod=marker
