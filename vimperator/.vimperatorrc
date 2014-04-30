@@ -1,11 +1,11 @@
-"Vimperator configuration file
+" Vimperator configuration file
 " Author: Pablo Bernardo @voylinux
 
 silent qmark g http://google.com
 
 " Remove everithing but navigation bar
 set gui=none
-set gui=navigation
+set gui=navigation,tabs
 
 " Set all completion
 set wildmode=full
@@ -22,4 +22,4 @@ nmap <silent> <C-k> :tabn<CR>
 nmap <silent> <C-j> :tabp<CR>
 imap <silent> <C-k> <esc><C-n>
 imap <silent> <C-j> <esc><C-p>
-nmap <silent> <C-t> :tabs<CR>
+nmap <silent> <C-t> :tabn<CR>
