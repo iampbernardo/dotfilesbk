@@ -1,6 +1,13 @@
 #!/bin/sh
+
+# Keyboarcs setting
 setxkbmap -layout us,es -variant altgr-intl, -option grp:menu_toggle -option grp_led:scroll -option ctrl:nocaps
 
+# Configure Xresource
 exec --no-startup-id xrdb -merge "~/.Xresources"
 
-echo "Keyboard loaded"
+# Remove cursor when not used
+exec --no-startup-id "unclutter &"
+
+# Use compton for composition
+exec --no-startup-id "compton -b"

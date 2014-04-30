@@ -4,7 +4,9 @@ XTerm*utf8:                 2
 URxvt.iconFile:             /usr/share/icons/elementary/apps/24/terminal.svg
 URxvt.letterSpace:          -2
 
-URxvt.background:           #121214
+URxvt*.transparency:        true
+URxvt*.shading:             110
+URxvt.background:           [95]#121214
 URxvt.foreground:           #FFFFFF
 XTerm*background:           #121212
 XTerm*foreground:           #FFFFFF
