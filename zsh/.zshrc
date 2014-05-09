@@ -83,6 +83,10 @@ export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
+# No bell, it's a hell
+setterm -blength 0
+set bell-style none
+
 # if [ -n "$DISPLAY" ]; then
 #     xset b off
 # fi

@@ -283,6 +283,13 @@ NeoBundle 'scrooloose/nerdtree'
 
 " }}}
 
+" Autocompletado Tern for VIM {{{
+
+
+NeoBundle 'marijnh/tern_for_vim'
+
+" }}}
+
 " FIN BUNDLES }}}
 
 " Instalar los plugins automaticamente {{{
