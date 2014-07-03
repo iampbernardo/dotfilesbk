@@ -45,7 +45,7 @@ ZSH_THEME="af-magic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git mercurial autopep8 bower debian encode64 git-extras git-promopt pip web-search ssh-agent)
+plugins=(git mercurial svn autopep8 bower debian encode64 git-extras git-promopt pip web-search ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +86,8 @@ archey
 # No bell, it's a hell
 setterm -blength 0
 set bell-style none
+
+PATH="${PATH}:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/"
 
 # if [ -n "$DISPLAY" ]; then
 #     xset b off

@@ -145,7 +145,11 @@ NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python'
 " Gestor de snippets avanzado y potente
 NeoBundle 'SirVer/ultisnips'
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips_my"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "ultisnips_my", "vim-snippets"]
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " }}}
 
@@ -426,7 +430,7 @@ set textwidth=0
 " set formatoptions=qrn1
 set colorcolumn=+1
 " set column
-set colorcolumn=80
+set colorcolumn=80,120
 " }}}
 
 " Hagamos las cosas bien, fuera teclas de desplazamiento {{{ -----------------
@@ -454,7 +458,7 @@ set t_Co=256                   " Habilita 256 colores en modo consola.
 if has('gui_running')          " Habilita el tema molokai para gvim y vim.
     colorscheme molokai
 else
-    colorscheme badwolf
+    colorscheme molokai256
     let g:Powerline_symbols = 'unicode'
 endif
 

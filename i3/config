@@ -167,7 +167,7 @@ bindsym $mod+r mode "resize"
 # the system information i3status finds out, 
 # if available)
 bar {
-        # status_command i3status
+         status_command i3status
 
 }
 

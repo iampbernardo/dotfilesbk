@@ -1,0 +1,54 @@
+snippet doc "Creates a PHP documented file" b
+<?php
+
+/**
+ * ${1:file_description}
+ * @author: '${2:author}'
+ * @file: ${3:file name}
+ * @package: ${4:package name}
+ * @description: ${5:description}
+ */
+
+endsnippet
+
+snippet doclass "Creates a PHP documented Class" b
+<?php
+
+/**
+ * ${1:file_description}
+ * @author: '${2:author}'
+ * @file: ${3:file name}
+ * @package: ${4:package name}
+ * @description: ${5:description}
+ */
+
+class ${6:Classname} extends ${7:Extended class}
+{
+
+	${8: Optional attributes}
+
+	public function __construct(${9:optional paramenters})
+	{
+
+		${10}	
+	}
+
+}
+
+endsnippet
+
+snippet this "Creates a $this variable with the FuC#!ng $ sign" b
+$this->${1}
+endsnippet
+
+snippet pubfunction
+/**
+ * ${1:Method description}
+ * @return: ${2:return type and description}
+ */
+public function ${3:function name}(${4:optional paramenters})
+{
+	${5}
+}
+endsnippet
+
