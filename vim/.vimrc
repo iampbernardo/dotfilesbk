@@ -160,7 +160,7 @@ NeoBundleLazy 'vim-scripts/po.vim--gray', {'autoload': {'filetypes': ['po']}}
 NeoBundleLazy 'joedicastro/vim-pentadactyl', {
             \ 'autoload': {'filetypes': ['pentadactyl']}}
 NeoBundleLazy 'vim-scripts/crontab.vim', {'autoload': {'filetypes': ['crontab']}}
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic.git'
 
 " }}}
 
@@ -235,16 +235,20 @@ NeoBundleLazy 'joedicastro/vim-sparkup', {'autoload':
 
 "NeoBundleLazy 'pangloss/vim-javascript', {'autoload':
 "            \ {'filetypes': ['javascript']}}
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':
-            \ {'filetypes': ['javascript']}}
+"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':
+"            \ {'filetypes': ['javascript']}}
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':
             \ {'filetypes': ['javascript']}}
 NeoBundleLazy 'wookiehangover/jshint.vim', {'autoload':
             \ {'filetypes': ['javascript']}}
 NeoBundleLazy 'heavenshell/vim-jsdoc', {'autoload':
             \ {'filetypes': ['javascript']}}
-
-
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload': 
+            \ {'filetypes': ['javascript']}}
+NeoBundleLazy 'matthewsimo/angular-vim-snippets', {'autoload': 
+            \ {'filetypes': ['javascript']}}
+NeoBundleLazy 'burnettk/vim-angular', {'autoload': 
+            \ {'filetypes': ['javascript']}}
 
 " }}}
 

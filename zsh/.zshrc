@@ -79,6 +79,9 @@ else
    source /usr/bin/virtualenvwrapper.sh
 fi
 
+
+#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk/bin/java-7-openjdk
+
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
 [ -z "$TMUX" ] && export TERM=xterm-256color
