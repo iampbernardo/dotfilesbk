@@ -41,6 +41,12 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " BUNDLES (Plugins gestionados a través de NeoBundle) {{{
 
+" YouCompleteMe {{{
+
+NeoBundle 'Valloric/YouCompleteMe'
+
+" }}}
+
 " Shougo's way {{{
 
 " Vimproc para ejecutar comandos de forma asincrona (NeoBundle, Unite)
