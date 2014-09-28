@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="af-magic"
+ZSH_THEME="clean"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -61,15 +61,8 @@ if [[ -n $SSH_CONNECTION ]]; then
   # export EDITOR='gvim'
 fi
 
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 export EDITOR=/usr/bin/vim
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
-export WORKON_HOME=~/virtualenvs
 
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
 # Debian based distributions
@@ -80,10 +73,6 @@ else
 fi
 
 
-#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk/bin/java-7-openjdk
-
-export PIP_VIRTUALENV_BASE=~/.virtualenvs
-archey
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
 # No bell, it's a hell
@@ -95,5 +84,13 @@ PATH="${PATH}:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/"
 # if [ -n "$DISPLAY" ]; then
 #     xset b off
 # fi
+
+
+#PATHS 
+
+export WORKON_HOME=~/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=~/.virtualenvs
+export LUA_PPREFIX=/usr/bin/lua
 
 alias tmux='tmux -2'
