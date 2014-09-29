@@ -471,7 +471,7 @@ endif
 
 " Fuente monoespaciada para gui {{{ ------------------------------------------
 
-set guifont=Inconsolata\ medium\ 14      " La fuente de texto para gvim.
+set guifont=Monaco\ 13      " La fuente de texto para gvim.
 
 " }}}
 
@@ -942,15 +942,15 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " Customization
 "===============
 
-" let g:airline_left_sep='>'
-" let g:airline_right_sep='<'
+let g:airline_left_sep='>'
+let g:airline_right_sep='<'
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=0
 let g:airline#extensions#branch#use_vcscommand = 1
 
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts =1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -1103,6 +1103,13 @@ augroup json_autocmd
   autocmd FileType json set expandtab
   autocmd FileType json set foldmethod=syntax
 augroup END
+
+" }}}
+
+
+" JAVASCRIPT {{{
+
+au BufRead,BufNewFile *.{js} set filetype=javascript shiftwidth=2 tabstop=2 expandtab
 
 " }}}
 

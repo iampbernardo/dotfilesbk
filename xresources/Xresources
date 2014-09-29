@@ -1,5 +1,5 @@
-URxvt.font:                 xft:Droid Sans Mono:size=11
-XTerm*faceName:             xft:Droid Sans Mono:size=11
+URxvt.font:                 xft:Monaco:size=11
+XTerm*faceName:             xft:Monaco:size=11
 XTerm*utf8:                 2
 URxvt.iconFile:             /usr/share/icons/elementary/apps/24/terminal.svg
 URxvt.letterSpace:          0

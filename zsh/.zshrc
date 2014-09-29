@@ -66,6 +66,7 @@ fi
 # export ARCHFLAGS="-arch x86_64"
 
 export EDITOR=/usr/bin/vim
+export CUDDLEFISH_ROOT=/home/voylinux/development/test-firefox/addon-sdk/bin
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -80,7 +81,7 @@ else
 fi
 
 
-#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk/bin/java-7-openjdk
+export JAVA_HOME=/usr
 
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 archey
@@ -91,6 +92,9 @@ setterm -blength 0
 set bell-style none
 
 PATH="${PATH}:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/"
+PATH="${PATH}:/home/voylinux/android-sdk-linux/tools/:/home/voylinux/android-sdk-linux/platform-tools/"
+PATH="${PATH}:/usr/bin/ant"
+PATH="${PATH}:/usr/"
 
 # if [ -n "$DISPLAY" ]; then
 #     xset b off
