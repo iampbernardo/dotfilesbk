@@ -36,7 +36,6 @@ NeoBundle 'scrooloose/syntastic'
 
 " NerdTREE explorer
 NeoBundle 'scrooloose/nerdtree'
-map <leader>n :NERDTreeToggle<CR>
 
 " GoYo distraction free mode
 NeoBundle 'junegunn/goyo.vim'
@@ -129,10 +128,11 @@ noremap <leader>vs :vsplit<CR>
 " Horizontal split
 noremap <leader>hs :split<CR>
 
-" Save
-noremap <C-S> :w<CR>
-
 " Solve syntax on problem
 noremap <leader>so :syntax on<CR>
+
+" Config NERDTree
+let NERDTreeShowHidden=1
+noremap <leader>n :NERDTreeToggle<CR>
 
 " }}}
