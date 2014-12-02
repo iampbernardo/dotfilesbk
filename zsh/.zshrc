@@ -80,6 +80,8 @@ setterm -blength 0
 set bell-style none
 
 PATH="${PATH}:/opt/android-sdk/tools/:/opt/android-sdk/platform-tools/"
+PATH="${PATH}:/home/pablo/Descargas/android-sdk-linux/tools/:/home/pablo/Descargas/android-sdk-linux/platforms/"
+
 
 # if [ -n "$DISPLAY" ]; then
 #     xset b off
