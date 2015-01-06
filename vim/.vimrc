@@ -40,6 +40,9 @@ NeoBundle 'scrooloose/nerdtree'
 " GoYo distraction free mode
 NeoBundle 'junegunn/goyo.vim'
 
+" Emmet for Zen Coding
+NeoBundle 'mattn/emmet-vim'
+
 " Language syntax -----------------------
 
 " JavaScript
@@ -50,6 +53,10 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'hail2u/vim-css3-syntax'
 " Markdown
 NeoBundle 'gabrielelana/vim-markdown'
+" Stylus
+NeoBundle 'wavded/vim-stylus'
+" Handlebars
+NeoBundle 'mustache/vim-mustache-handlebars'
 
 " ---------------------------------------
 
@@ -111,7 +118,7 @@ nnoremap <space> za
 
 
 " Defualt font and font size
-set guifont=Droid\ Sans\ Mono\ 12 
+set guifont=Monospace\ 12 
 set guioptions-=m       " Remove menu
 set guioptions-=T       " Remove toolbar
 set guioptions-=L       " Remove left scroll
