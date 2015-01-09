@@ -43,6 +43,16 @@ NeoBundle 'junegunn/goyo.vim'
 " Emmet for Zen Coding
 NeoBundle 'mattn/emmet-vim'
 
+" Autocomplete
+" NeoBundle 'Valloric/YouCompleteMe'
+
+" Emmet rainbow parenthesis
+NeoBundle 'kien/rainbow_parentheses.vim'
+
+" Snippets
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
 " Language syntax -----------------------
 
 " JavaScript
@@ -88,7 +98,7 @@ set number			    " Show line numbers
 set showcmd			    " Show command in bottom bar
 set cursorline		    " Show current cursor line
 filetype indent on      " load filetype-specific indent files
-set wildmenu            " visual autocomplete for command menu
+set wildmenu            " visual autocompletefor command menu
 set lazyredraw          " redraw only when we need to
 set showmatch           " highlight matching [{()}]
 
@@ -118,7 +128,7 @@ nnoremap <space> za
 
 
 " Defualt font and font size
-set guifont=Monospace\ 12 
+set guifont=Monospace\ 12
 set guioptions-=m       " Remove menu
 set guioptions-=T       " Remove toolbar
 set guioptions-=L       " Remove left scroll
@@ -141,5 +151,41 @@ noremap <leader>so :syntax on<CR>
 " Config NERDTree
 let NERDTreeShowHidden=1
 noremap <leader>n :NERDTreeToggle<CR>
+
+" }}}
+ 
+
+" Plugins config {{{ =======================================================
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" UtilSnips
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Rainbow partenthesis
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+" }}}
+
+
+" Language configs  {{{ ====================================================
+
+" PHP Symfony
+autocmd BufRead, BufNewFile *.php set ts=2 sts=2 et
 
 " }}}
