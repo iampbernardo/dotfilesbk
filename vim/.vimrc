@@ -43,6 +43,9 @@ NeoBundle 'junegunn/goyo.vim'
 " Emmet for Zen Coding
 NeoBundle 'mattn/emmet-vim'
 
+" Tagbar (see tags in file)
+NeoBundle 'majutsushi/tagbar'
+
 " Autocomplete
 " NeoBundle 'Valloric/YouCompleteMe'
 
@@ -52,6 +55,10 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 " Snippets
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+
+" Fugitive (git wrapper)
+NeoBundle 'tpope/vim-fugitive'
+
 
 " Language syntax -----------------------
 
@@ -86,6 +93,10 @@ let mapleader=","       " leader is comma
 set colorcolumn=80      " Show a marker in line 80
 set laststatus=2        " Enable statusline
 set t_Co=256            " Habilita 256 colores en modo consola.
+set list                " Show  spaces, tabs, eol ...
+" Selected chars  (eol, tab, trail, extends, precedes)
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+
 if has('gui_running') " Habilita el tema molokai para gvim y vim.
     colorscheme molokai
 else
@@ -121,6 +132,14 @@ set foldmethod=marker   " fold based on indent level
 " space open/closes folds
 nnoremap <space> za
 
+
+" moving arround
+nmap <C-Left> <C-w>h
+nmap <C-Right> <C-w>l
+nmap <C-Up> <C-w>k
+nmap <C-Down> <C-w>j
+
+
 " }}}
 
 
@@ -150,6 +169,9 @@ noremap <leader>so :syntax on<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+autocmd VimEnter * wincmd w
 noremap <leader>n :NERDTreeToggle<CR>
 
 " }}}
@@ -181,6 +203,11 @@ au Syntax * RainbowParenthesesLoadBraces
 
 
 " }}}
+
+" Charge a machine custom config
+if filereadable('~/.custom_vim')
+    source ~/.custom_vim
+endif
 
 
 " Language configs  {{{ ====================================================
