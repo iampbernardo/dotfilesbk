@@ -37,11 +37,18 @@ NeoBundle 'scrooloose/syntastic'
 " NerdTREE explorer
 NeoBundle 'scrooloose/nerdtree'
 
+" Editor config
+NeoBundle 'editorconfig/editorconfig-vim'
+
+
 " GoYo distraction free mode
 NeoBundle 'junegunn/goyo.vim'
 
 " Emmet for Zen Coding
 NeoBundle 'mattn/emmet-vim'
+
+" Vim tags
+NeoBundle 'szw/vim-tags'
 
 " Tagbar (see tags in file)
 NeoBundle 'majutsushi/tagbar'
@@ -86,8 +93,8 @@ NeoBundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on
 syntax on 			    " Activar coloreado de sintaxis
-set tabstop=4			" Number of visual spaces per tab
-set softtabstop=4		" Number of spaces when editing
+set tabstop=2			" Number of visual spaces per tab
+set softtabstop=2		" Number of spaces when editing
 set expandtab			" Tabs are spaces
 let mapleader=","       " leader is comma
 set colorcolumn=80      " Show a marker in line 80
@@ -133,11 +140,15 @@ set foldmethod=marker   " fold based on indent level
 nnoremap <space> za
 
 
-" moving arround
+" moving around
 nmap <C-Left> <C-w>h
 nmap <C-Right> <C-w>l
 nmap <C-Up> <C-w>k
 nmap <C-Down> <C-w>j
+
+nmap <C-l> :tabnext<CR>
+nmap <C-h> :tabprevious<CR>
+
 
 
 " }}}
@@ -201,6 +212,12 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" Vim - tags
+let g:vim_tags_auto_generate = 1
+
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " }}}
 
@@ -214,5 +231,6 @@ endif
 
 " PHP Symfony
 autocmd BufRead, BufNewFile *.php set ts=2 sts=2 et
+autocmd BufRead, BufNewFile *.js set ts=2 sts=2 et
 
 " }}}
