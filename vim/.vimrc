@@ -59,6 +59,9 @@ NeoBundle 'majutsushi/tagbar'
 " Emmet rainbow parenthesis
 NeoBundle 'kien/rainbow_parentheses.vim'
 
+" Haskell
+NeoBundle 'wlangstroth/vim-haskell'
+
 " Snippets
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
