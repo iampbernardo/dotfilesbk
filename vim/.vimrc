@@ -37,8 +37,14 @@ NeoBundle 'scrooloose/syntastic'
 " NerdTREE explorer
 NeoBundle 'scrooloose/nerdtree'
 
+" NerdTREE Tabs
+NeoBundle 'jistr/vim-nerdtree-tabs'
+
 " Editor config
 NeoBundle 'editorconfig/editorconfig-vim'
+
+" Ctrlp (Fuzzy search)
+NeoBundle 'kien/ctrlp.vim'
 
 
 " GoYo distraction free mode
@@ -54,7 +60,7 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'majutsushi/tagbar'
 
 " Autocomplete
-" NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe'
 
 " Emmet rainbow parenthesis
 NeoBundle 'kien/rainbow_parentheses.vim'
@@ -84,6 +90,8 @@ NeoBundle 'gabrielelana/vim-markdown'
 NeoBundle 'wavded/vim-stylus'
 " Handlebars
 NeoBundle 'mustache/vim-mustache-handlebars'
+" Less
+NeoBundle 'groenewege/vim-less'
 
 " ---------------------------------------
 
@@ -149,6 +157,7 @@ nmap <C-Right> <C-w>l
 nmap <C-Up> <C-w>k
 nmap <C-Down> <C-w>j
 
+nmap <Leader>t :tabnew<CR>
 nmap <C-l> :tabnext<CR>
 nmap <C-h> :tabprevious<CR>
 
@@ -183,10 +192,11 @@ noremap <leader>so :syntax on<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd w
-noremap <leader>n :NERDTreeToggle<CR>
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * wincmd w
+noremap <leader>n :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " }}}
  
@@ -215,12 +225,17 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" Ctrl P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " Vim - tags
 let g:vim_tags_auto_generate = 1
 
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
 
 " }}}
 
