@@ -169,16 +169,21 @@ nmap <C-h> :tabprevious<CR>
 " GUI configs {{{ ===========================================================
 
 
-" Defualt font and font size
-set guifont=Monospace\ 12
+" Default font and font size
+set guifont=Monospace\ 13
 set guioptions-=m       " Remove menu
 set guioptions-=T       " Remove toolbar
 set guioptions-=L       " Remove left scroll
 set guioptions-=r       " Remove right scroll
+set guioptions=i        " VIM icon
+set guioptions-=e       " Hide Tab page
+
 " }}}
 
 colorscheme molokai     " Default colorscheme
 set background=dark 	" Utilizar la versión oscura de los temas
+
+"set showtabline=2
 " Custom mappings {{{ =======================================================
 
 " Vertical split
@@ -235,6 +240,13 @@ let g:vim_tags_auto_generate = 1
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" YouCompleteMe
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_autotrigger = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+
 
 
 " }}}
