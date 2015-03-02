@@ -2,9 +2,12 @@
 (setq my-packages
       '(
 	auto-complete
+	auto-complete-config
 	autopair
 	emmet-mode
+	editor-config
 	fill-column-indicator
+	less-css-mode
 	markdown-mode
 	monokai-theme
 	twittering-mode
@@ -52,12 +55,12 @@
 (setq auto-save-list-file-prefix nil)
 
 ;; Set font
-(set-face-attribute 'default nil :family "Dejavu Sans Mono" :height 118)
+(set-face-attribute 'default nil :family "Monaco" :height 128)
 
 
 (require 'fill-column-indicator)
 (fci-mode)
-(setq fci-rule-column 79)
+(setq fci-rule-column 80)
 
 ;; Select theme
 (load-theme 'monokai t)
@@ -104,8 +107,25 @@
 ;; Autopair
 (require 'autopair)
 
+;; Autocomplete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+;; Autocomplete key --
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
+
+
 ;; ============= MODES ========================================================
 (add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+;; Web mode
+(add-hook 'web-mode-hook
+	  '(lambda()
+    (setq emmet-mode t)
+	  (setq indent-tabs-mode nil)
+	  (setq tab-width 2)
+	  (setq c-basic-indent 4)))
