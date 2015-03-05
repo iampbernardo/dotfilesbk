@@ -122,6 +122,13 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+;; Emmet mode
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
+;; Indentation config 
+
+
 ;; Web mode
 (add-hook 'web-mode-hook
 	  '(lambda()
