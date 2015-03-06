@@ -3,13 +3,17 @@
       '(
 	auto-complete
 	auto-complete-config
+	ac-php
 	autopair
 	emmet-mode
 	editor-config
 	fill-column-indicator
+	flymake
 	less-css-mode
 	markdown-mode
 	monokai-theme
+	phpunit
+	phpdocumentor
 	twittering-mode
 	web-mode	
 ))
@@ -119,7 +123,7 @@
 ;; ============= MODES ========================================================
 (add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Emmet mode
