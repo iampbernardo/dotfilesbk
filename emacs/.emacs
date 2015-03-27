@@ -11,6 +11,7 @@
 	flymake
 	js2-mode
 	less-css-mode
+        magit
 	markdown-mode
 	monokai-theme
 	phpunit
