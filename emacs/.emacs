@@ -17,6 +17,7 @@
 	monokai-theme
 	phpunit
 	phpdocumentor
+        tronesque
 	twittering-mode
 	web-mode
         yasnipet
@@ -75,7 +76,7 @@
 (setq fci-rule-column 80)
 
 ;; Select theme
-(load-theme 'monokai t)
+(load-theme 'tronesque t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -134,6 +135,7 @@
 (ac-set-trigger-key "<tab>")
 
 
+
 ;; ============= MODES ========================================================
 (add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
@@ -141,11 +143,16 @@
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Javscript and relateds
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 (add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
 (add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
+(setq js2-basic-offset 2)
+
+(setq js2-use-font-lock-faces t)
 (setq js2-highlight-level 3)
 
 
