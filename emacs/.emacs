@@ -165,7 +165,8 @@
 ;;(define-key text-mode-map (kdb "TAB") 'tab-to-tab-stop)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent 'complete)
-(global-set-key "\C-x z" 'repeat)
+(global-set-key "\C-x z" 'repeat) ;; Create a "Redo"
+(global-set-key (kbd "C-x C-k") 'kill-this-buffer) ;; Kill current buffer
 
 
 ;; Web mode defaults
