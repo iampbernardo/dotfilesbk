@@ -3,6 +3,7 @@
       '(
 	auto-complete
 	auto-complete-config
+        ac-js2
 	ac-php
 	autopair
 	emmet-mode
@@ -131,6 +132,13 @@
 (add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+
+;; Javscript and relateds
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq js2-highlight-level 3)
+
 
 ;; Emmet mode
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
