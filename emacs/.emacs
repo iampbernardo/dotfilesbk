@@ -109,7 +109,11 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+
+;; =========== Magit
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "<f10>") 'eshell)
+(global-set-key (kbd "M-o") 'other-window)
 
 ;; colum number
 (setq column-number-mode t)
@@ -129,6 +133,13 @@
 ;; Autocomplete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(global-auto-complete-mode t)
+(setq ac-auto-start 2)
+(set-face-background 'ac-menu-face "lightgray")
+(set-face-underline 'ac-menu-face "darkgray")
+(set-face-background 'ac-selection-face "steelblue")
+
+
 (ac-config-default)
 ;; Autocomplete key --
 (ac-set-trigger-key "TAB")
