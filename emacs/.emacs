@@ -9,17 +9,19 @@
 	editor-config
 	fill-column-indicator
 	flymake
+	js2-mode
 	less-css-mode
 	markdown-mode
 	monokai-theme
 	phpunit
 	phpdocumentor
 	twittering-mode
-	web-mode	
+	web-mode
 ))
 
-;; Repositiories list
+;;;;;;;;;;;;;;;;;;;;; Package management ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Repositiories list
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
@@ -34,6 +36,9 @@
   (when (and (not (package-installed-p pkg))
            (assoc pkg package-archive-contents))
     (package-install pkg)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; Global config ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Make sure that UTF-8 is used everywhere.
 
@@ -58,10 +63,10 @@
 (setq auto-save-default nil)
 (setq auto-save-list-file-prefix nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;; GUI and visual configs ;;;;;;;;;;;;;;;;
+
 ;; Set font
-(set-face-attribute 'default nil :family "Monaco" :height 128)
-
-
+(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 128)
 (require 'fill-column-indicator)
 (fci-mode)
 (setq fci-rule-column 80)
@@ -77,7 +82,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-;; Splash screen settings 
+;; Splash screen settings
 (setq inhibit-splash-screen t
       initial-scratch-message nil
       initial-major-mode 'org-mode)
@@ -121,25 +126,39 @@
 
 
 ;; ============= MODES ========================================================
-(add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Emmet mode
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
-;; Indentation config 
+;; Edi global configs
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;;(define-key text-mode-map (kdb "TAB") 'tab-to-tab-stop)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-always-indent 'complete)
 
 
-;; Web mode
-(add-hook 'web-mode-hook
-	  '(lambda()
-    (setq emmet-mode t)
-	  (setq indent-tabs-mode nil)
-	  (setq tab-width 2)
-	  (setq c-basic-indent 4)))
+
+;; Web mode defaults
+(defun my-web-mode-defaults()
+  (require 'fill-column-indicator)
+  (local-set-key (kbd "RET") 'newline-and-indent)
+  (fci-mode)
+  (setq fci-rule-column 80)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+
+
+  (setq emmet-mode t)
+  (setq web-mode-code-indent-offset 2))
+
+;; Modes and hooks
+(add-hook 'web-mode-hook 'my-web-mode-defaults)
+(add-hook 'less-css-mode 'my-web-mode-defaults)
 
 ;; Org mode
 
@@ -149,7 +168,7 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
- 
+
 (setq org-log-done t)
 (setq org-agenda-files (list "~/org/blog.org"
 "~/org/personal.org"
@@ -157,3 +176,16 @@
 "~/org/mh.org"
 "~/org/learn.org"
 ))
+
+;; Custom functions
+
+(defun open-dot-emacs ()
+  "opening dot emacs"
+  (interactive) ; Now it's also a command
+  (find-file "~/.emacs")
+)
+
+;; kill all buffes
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
