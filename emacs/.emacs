@@ -135,6 +135,7 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (global-auto-complete-mode t)
 (setq ac-auto-start 2)
+(setq ac-dwim t)
 (set-face-background 'ac-menu-face "lightgray")
 (set-face-underline 'ac-menu-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
