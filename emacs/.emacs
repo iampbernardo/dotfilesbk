@@ -160,12 +160,12 @@
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
-;; Edi global configs
+;; Edit global configs
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;;(define-key text-mode-map (kdb "TAB") 'tab-to-tab-stop)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent 'complete)
-
+(global-set-key "\C-x z" 'repeat)
 
 
 ;; Web mode defaults
@@ -176,8 +176,6 @@
   (setq fci-rule-column 80)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
-
-
   (setq emmet-mode t)
   (setq web-mode-code-indent-offset 2))
 
