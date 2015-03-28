@@ -1,10 +1,10 @@
 (require 'package)
 (setq my-packages
       '(
+	ac-php
+	ac-js2-mode
 	auto-complete
 	auto-complete-config
-        ac-js2
-	ac-php
 	autopair
 	emmet-mode
 	editor-config
@@ -20,7 +20,7 @@
         tronesque
 	twittering-mode
 	web-mode
-        yasnipet
+        yasnippet
 ))
 
 ;;;;;;;;;;;;;;;;;;;;; Package management ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -94,8 +94,9 @@
 
 
 
-;; No backup files
+;; No backupfiles
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Ido mode
 (ido-mode t)
@@ -136,10 +137,7 @@
 (global-auto-complete-mode t)
 (setq ac-auto-start 2)
 (setq ac-dwim t)
-(set-face-background 'ac-menu-face "lightgray")
-(set-face-underline 'ac-menu-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
-
 
 (ac-config-default)
 ;; Autocomplete key --
