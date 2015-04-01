@@ -17,6 +17,7 @@
 	monokai-theme
 	phpunit
 	phpdocumentor
+        sublime-themes
         tronesque
 	twittering-mode
 	web-mode
@@ -76,7 +77,7 @@
 (setq fci-rule-column 80)
 
 ;; Select theme
-(load-theme 'tronesque t)
+(load-theme 'granger t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -135,8 +136,10 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (global-auto-complete-mode t)
-(setq ac-auto-start 2)
+(setq ac-auto-start 5)
 (setq ac-dwim t)
+;;(set-face-background 'ac-menu-face "lightgray")
+;;(set-face-underline 'ac-menu-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
 
 (ac-config-default)
@@ -149,7 +152,7 @@
 ;; ============= MODES ========================================================
 (add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$"  . php-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Javscript and relateds
@@ -190,9 +193,23 @@
   (setq emmet-mode t)
   (setq web-mode-code-indent-offset 2))
 
+(defun my-php-mode-defaults ()
+  "My PHP mode configuration."
+  (require 'fill-column-indicator)
+  (local-set-key (kbd "RET") 'newline-and-indent)
+  (fci-mode)
+  (setq fci-rule-column 80)
+  (setq emmet-mode t)
+  (setq indent-tabs-mode nil
+        tab-width 2
+        c-basic-offset 2))
+
+
+
 ;; Modes and hooks
 (add-hook 'web-mode-hook 'my-web-mode-defaults)
 (add-hook 'less-css-mode 'my-web-mode-defaults)
+(add-hook 'php-mode-hook 'my-php-mode-defaults)
 
 ;; Org mode
 
