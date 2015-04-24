@@ -185,12 +185,15 @@
 ;; Web mode defaults
 (defun my-web-mode-defaults()
   (require 'fill-column-indicator)
-  (local-set-key (kbd "RET") 'newline-and-indent)
+;;  (local-set-key (kbd "RET") 'newline-and-indent)
   (fci-mode)
   (setq fci-rule-column 80)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq emmet-mode t)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (setq c-basic-offset 2)
   (setq web-mode-code-indent-offset 2))
 
 (defun my-php-mode-defaults ()
