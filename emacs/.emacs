@@ -77,7 +77,7 @@
 (setq fci-rule-column 80)
 
 ;; Select theme
-(load-theme 'granger t)
+(load-theme 'monokai t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -106,7 +106,7 @@
 
 
 ;; Special keybindings
-(global-set-key (kbd "RET") 'newline-and-indent)
+;(global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-+") 'text-scale-increase)
@@ -152,7 +152,7 @@
 ;; ============= MODES ========================================================
 (add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$"  . php-mode))
+(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Javscript and relateds
@@ -204,12 +204,41 @@
         tab-width 2
         c-basic-offset 2))
 
+;; Indent setup
+;; idea from : http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
+(defun my-setup-indent (n)
+  (require 'fill-column-indicator)
+  (local-set-key (kbd "RET") 'newline-and-indent)
+  (fci-mode)
+  (setq fci-rule-column 80)
+  (setq emmet-mode t)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  (tab-width n) ;; tab size
+  (c-basic-offset n)
+  (indent-tabs-mode nil)
+  )
+
+
+(defun my-office-code-style ()
+  (interactive)
+  (message "Office code style!")
+  (setq indent-tabs-mode nil) ; use space instead of tabs
+  (my-setup-indent 2))
+
 
 
 ;; Modes and hooks
-(add-hook 'web-mode-hook 'my-web-mode-defaults)
-(add-hook 'less-css-mode 'my-web-mode-defaults)
-(add-hook 'php-mode-hook 'my-php-mode-defaults)
+(add-hook 'web-mode-hook 'my-office-code-style)
+(add-hook 'less-css-mode 'my-office-code-style)
+(add-hook 'php-mode-hook 'my-office-code-style)
 
 ;; Org mode
 
