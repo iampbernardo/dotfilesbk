@@ -10,6 +10,10 @@
 	editor-config
 	fill-column-indicator
 	flymake
+        helm
+	helm-git
+        helm-git-grep
+        helm-ls-git
 	js2-mode
 	less-css-mode
         magit
@@ -32,6 +36,7 @@
                          ("org" . "http://orgmode.org/elpa/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 ;;; initialize the packages and create the packages list if not exists
+(require 'eieio)
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -70,6 +75,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;; GUI and visual configs ;;;;;;;;;;;;;;;;
 
+;; Some fun in the scroll
+(nyan-mode)
+(global-linum-mode 1)
+
 ;; Set font
 (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 128)
 (require 'fill-column-indicator)
@@ -77,7 +86,7 @@
 (setq fci-rule-column 80)
 
 ;; Select theme
-(load-theme 'monokai t)
+(load-theme 'wombat t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -102,7 +111,7 @@
 ;; Ido mode
 (ido-mode t)
 (setq ido-enable-flex-matching t
-      ido-use-virtual-buffers t)
+      ido-use-virtual-buffers nil)
 
 
 ;; Special keybindings
@@ -117,11 +126,14 @@
 (global-set-key (kbd "<f10>") 'eshell)
 (global-set-key (kbd "M-o") 'other-window)
 
+;; =========== Loop mode
+(global-set-key (kbd "<f3>") 'cycle-for-web)
+
+
+
 ;; colum number
 (setq column-number-mode t)
 
-;; line numbers
-(global-linum-mode t)
 
 
 ;; Autopair
@@ -140,7 +152,12 @@
 (setq ac-dwim t)
 ;;(set-face-background 'ac-menu-face "lightgray")
 ;;(set-face-underline 'ac-menu-face "darkgray")
+;(set-face-background 'ac-selection-face "steelblue")
+
+(set-face-background 'ac-candidate-face "lightgray")
+(set-face-underline 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")
+
 
 (ac-config-default)
 ;; Autocomplete key --
@@ -194,7 +211,9 @@
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
   (setq c-basic-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-code-indent-offset 2)
+  (setq linum-mode t)
+)
 
 (defun my-php-mode-defaults ()
   "My PHP mode configuration."
@@ -203,9 +222,11 @@
   (fci-mode)
   (setq fci-rule-column 80)
   (setq emmet-mode t)
-  (setq indent-tabs-mode nil
-        tab-width 2
-        c-basic-offset 2))
+  (setq indent-tabs-mode nil)
+  (setq tab-width 2)
+  (setq c-basic-offset 2)
+  (setq linum-mode t)
+)
 
 ;; Indent setup
 ;; idea from : http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
@@ -224,10 +245,11 @@
   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
   (setq css-indent-offset n) ; css-mode
-  (tab-width n) ;; tab size
-  (c-basic-offset n)
-  (indent-tabs-mode nil)
-  )
+  (setq tab-width n) ;; tab size
+  (setq c-basic-offset n)
+  (setq indent-tabs-mode nil)
+  (setq linum-mode t)
+)
 
 
 (defun my-office-code-style ()
@@ -268,7 +290,49 @@
   (find-file "~/.emacs")
 )
 
-;; kill all buffes
+;; kill all buffers
+
 (defun close-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
+
+;; Helm
+;;; Enable Modes (This is loading nearly everything).
+;;
+(setq helm-mode 1)
+(setq helm-adaptative-mode 1)
+(setq helm-autoresize-mode 1)
+
+
+(setq helm-locate-fuzzy-match t) ;; Fuzzy locate files
+(setq helm-M-x-fuzzy-match t)    ;; Fuzzy match
+
+;;; Global-map
+;;
+;;
+(global-set-key (kbd "M-x")                          'undefined)
+(global-set-key (kbd "M-x")                          'helm-M-x)
+(global-set-key (kbd "M-y")                          'helm-show-kill-ring)
+(global-set-key (kbd "C-c f")                        'helm-recentf)
+(global-set-key (kbd "C-x C-f")                      'helm-find-files)
+(global-set-key (kbd "C-c <SPC>")                    'helm-all-mark-rings)
+(global-set-key (kbd "C-x r b")                      'helm-filtered-bookmarks)
+(global-set-key (kbd "C-h r")                        'helm-info-emacs)
+(global-set-key (kbd "C-:")                          'helm-eval-expression-with-eldoc)
+(global-set-key (kbd "C-,")                          'helm-calcul-expression)
+(global-set-key (kbd "C-h d")                        'helm-info-at-point)
+(global-set-key (kbd "C-c g")                        'helm-google-suggest)
+(global-set-key (kbd "C-x C-d")                      'helm-browse-project)
+(global-set-key (kbd "<f1>")                         'helm-resume)
+(global-set-key (kbd "C-h C-f")                      'helm-apropos)
+(global-set-key (kbd "<f5> s")                       'helm-find)
+(global-set-key (kbd "<f2>")                         'helm-execute-kmacro)
+(define-key global-map [remap jump-to-register]      'helm-register)
+(define-key global-map [remap list-buffers]          'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand]        'helm-dabbrev)
+(define-key global-map [remap find-tag]              'helm-etags-select)
+(define-key global-map [remap xref-find-definitions] 'helm-etags-select)
+
+;; Helm GIT
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-g") 'helm-git-grep)
