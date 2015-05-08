@@ -1,11 +1,8 @@
 (require 'package)
 (setq my-packages
       '(
-	ac-php
-	ac-js2-mode
-	auto-complete
-	auto-complete-config
 	autopair
+	company
 	emmet-mode
 	editor-config
 	fill-column-indicator
@@ -19,6 +16,7 @@
         magit
 	markdown-mode
 	monokai-theme
+	php-extras
 	phpunit
 	phpdocumentor
         sublime-themes
@@ -77,7 +75,7 @@
 
 ;; Some fun in the scroll
 (nyan-mode)
-(global-linum-mode 1)
+;;(global-linum-mode 1)
 
 ;; Set font
 (set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 128)
@@ -126,17 +124,9 @@
 (global-set-key (kbd "<f10>") 'eshell)
 (global-set-key (kbd "M-o") 'other-window)
 
-;; =========== Loop mode
-(global-set-key (kbd "<f3>") 'cycle-for-web)
-
-
-
 ;; colum number
 (setq column-number-mode t)
 
-
-
-;; Autopair
 (require 'autopair)
 
 ;;; yasnippet
@@ -144,55 +134,61 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+
+
+
 ;; Autocomplete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(global-auto-complete-mode t)
-(setq ac-auto-start 5)
-(setq ac-dwim t)
-;;(set-face-background 'ac-menu-face "lightgray")
-;;(set-face-underline 'ac-menu-face "darkgray")
-;(set-face-background 'ac-selection-face "steelblue")
-
-(set-face-background 'ac-candidate-face "lightgray")
-(set-face-underline 'ac-candidate-face "darkgray")
-(set-face-background 'ac-selection-face "steelblue")
-
-
-(ac-config-default)
-;; Autocomplete key --
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
-
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 ;; ============= MODES ========================================================
-(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+
+(add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
+
+
+(defun my-setup-php ()
+  ;; enable web mode
+  (web-mode)
+  ;; Linue numbers
+  (linum-mode)
+
+  ;; make these variables local
+  (make-local-variable 'web-mode-code-indent-offset)
+  (make-local-variable 'web-mode-markup-indent-offset)
+  (make-local-variable 'web-mode-css-indent-offset)
+
+  ;; set indentation, can set different indentation level for different code type
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2))
+
+
+;(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
+;(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;; Javscript and relateds
-(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
-(add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
-(setq js2-basic-offset 2)
+;(add-hook 'js-mode-hook 'js2-minor-mode)
+;(add-hook 'js2-mode-hook 'ac-js2-mode)
+;(add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
+;(add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
+;(setq js2-basic-offset 2)
 
-(setq js2-use-font-lock-faces t)
-(setq js2-highlight-level 3)
+;(setq js2-use-font-lock-faces t)
+;(setq js2-highlight-level 3)
 
 
 ;; Emmet mode
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+;(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+;(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 ;; Edit global configs
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-;;(define-key text-mode-map (kdb "TAB") 'tab-to-tab-stop)
+;; ;;(define-key text-mode-map (kdb "TAB") 'tab-to-tab-stop)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent 'complete)
 (global-set-key "\C-x z" 'repeat) ;; Create a "Redo"
@@ -200,70 +196,71 @@
 
 
 ;; Web mode defaults
-(defun my-web-mode-defaults()
-  (require 'fill-column-indicator)
+;(defun my-web-mode-defaults()
+ ; (require 'fill-column-indicator)
 ;;  (local-set-key (kbd "RET") 'newline-and-indent)
-  (fci-mode)
-  (setq fci-rule-column 80)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2)
-  (setq emmet-mode t)
-  (setq indent-tabs-mode nil)
-  (setq tab-width 2)
-  (setq c-basic-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq linum-mode t)
-)
-
-(defun my-php-mode-defaults ()
-  "My PHP mode configuration."
-  (require 'fill-column-indicator)
-  (local-set-key (kbd "RET") 'newline-and-indent)
-  (fci-mode)
-  (setq fci-rule-column 80)
-  (setq emmet-mode t)
-  (setq indent-tabs-mode nil)
-  (setq tab-width 2)
-  (setq c-basic-offset 2)
-  (setq linum-mode t)
-)
-
-;; Indent setup
-;; idea from : http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
-(defun my-setup-indent (n)
-  (require 'fill-column-indicator)
-  (local-set-key (kbd "RET") 'newline-and-indent)
-  (fci-mode)
-  (setq fci-rule-column 80)
-  (setq emmet-mode t)
-  ;; web development
-  (setq coffee-tab-width n) ; coffeescript
-  (setq javascript-indent-level n) ; javascript-mode
-  (setq js-indent-level n) ; js-mode
-  (setq js2-basic-offset n) ; js2-mode
-  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
-  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
-  (setq css-indent-offset n) ; css-mode
-  (setq tab-width n) ;; tab size
-  (setq c-basic-offset n)
-  (setq indent-tabs-mode nil)
-  (setq linum-mode t)
-)
+ ; (fci-mode)
+ ; (setq fci-rule-column 80)
+ ; (setq web-mode-css-indent-offset 2)
+ ; (setq web-mode-markup-indent-offset 2)
+ ; (setq emmet-mode t)
+ ; (setq indent-tabs-mode nil)
+ ; (setq tab-width 2)
+ ; (setq c-basic-offset 2)
+ ; (setq web-mode-code-indent-offset 2)
+ ; (setq linum-mode t)
+;)
 
 
-(defun my-office-code-style ()
-  (interactive)
-  (message "Office code style!")
-  (setq indent-tabs-mode nil) ; use space instead of tabs
-  (my-setup-indent 2))
+;(defun my-php-mode-defaults ()
+ ; "My PHP mode configuration."
+ ; (require 'fill-column-indicator)
+ ; (local-set-key (kbd "RET") 'newline-and-indent)
+ ; (fci-mode)
+ ; (setq fci-rule-column 80)
+ ; (setq emmet-mode t)
+ ; (setq indent-tabs-mode nil)
+ ; (setq tab-width 2)
+ ; (setq c-basic-offset 2)
+ ; (setq linum-mode t)
+;)
+
+;; ;; Indent setup
+;; ;; idea from : http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
+;; (defun my-setup-indent (n)
+;;   (require 'fill-column-indicator)
+;;   (local-set-key (kbd "RET") 'newline-and-indent)
+;;   (fci-mode)
+;;   (setq fci-rule-column 80)
+;;   (setq emmet-mode t)
+;;   ;; web development
+;;   (setq coffee-tab-width n) ; coffeescript
+;;   (setq javascript-indent-level n) ; javascript-mode
+;;   (setq js-indent-level n) ; js-mode
+;;   (setq js2-basic-offset n) ; js2-mode
+;;   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+;;   (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+;;   (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+;;   (setq css-indent-offset n) ; css-mode
+;;   (setq tab-width n) ;; tab size
+;;   (setq c-basic-offset n)
+;;   (setq indent-tabs-mode nil)
+;;   (setq linum-mode t)
+;; )
+
+
+;; (defun my-office-code-style ()
+;;   (interactive)
+;;   (message "Office code style!")
+;;   (setq indent-tabs-mode nil) ; use space instead of tabs
+;;   (my-setup-indent 2))
 
 
 
 ;; Modes and hooks
-(add-hook 'web-mode-hook 'my-office-code-style)
-(add-hook 'less-css-mode 'my-office-code-style)
-(add-hook 'php-mode-hook 'my-office-code-style)
+;; (add-hook 'web-mode-hook 'my-office-code-style)
+;; (add-hook 'less-css-mode 'my-office-code-style)
+;; (add-hook 'php-mode-hook 'my-office-code-style)
 
 ;; Org mode
 
@@ -336,3 +333,37 @@
 ;; Helm GIT
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 (global-set-key (kbd "C-x C-g") 'helm-git-grep)
+
+
+;; Etags
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name)))
+
+;; Refresh etags
+  ;;;  Jonas.Jarnestrom<at>ki.ericsson.se A smarter
+  ;;;  find-tag that automagically reruns etags when it cant find a
+  ;;;  requested item and then makes a new try to locate it.
+  ;;;  Fri Mar 15 09:52:14 2002
+
+(defadvice find-tag (around refresh-etags activate)
+   "Rerun etags and reload tags if tag not found and redo find-tag.
+   If buffer is modified, ask about save before running etags."
+  (let ((extension (file-name-extension (buffer-file-name))))
+    (condition-case err
+    ad-do-it
+      (error (and (buffer-modified-p)
+          (not (ding))
+          (y-or-n-p "Buffer is modified, save it? ")
+          (save-buffer))
+         (er-refresh-etags extension)
+         ad-do-it))))
+
+(defun er-refresh-etags (&optional extension)
+  "Run etags on all peer files in current dir and reload them silently."
+  (interactive)
+  (shell-command (format "etags *.%s" (or extension "el")))
+  (let ((tags-revert-without-query t))  ; don't query, revert silently
+    (visit-tags-table default-directory nil)))
