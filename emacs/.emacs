@@ -5,6 +5,7 @@
 	company
 	emmet-mode
 	editor-config
+        elfeed
 	fill-column-indicator
 	flymake
         helm
@@ -57,6 +58,9 @@
 (setq locale-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (set-input-method nil)
+
+;; Linum mode
+(global-linum-mode t)
 
 ;; I like to keep all of the temporal files and dirs (cache, backups,
 ;; ...) in an unique directory. If this directory does not exists, then
@@ -149,6 +153,8 @@
 (defun my-setup-php ()
   ;; enable web mode
   (web-mode)
+  ;; enable emmet-mode
+  (emmet-mode)
   ;; Linue numbers
   (linum-mode)
 
@@ -301,12 +307,15 @@
 (setq helm-autoresize-mode 1)
 
 
-(setq helm-locate-fuzzy-match t) ;; Fuzzy locate files
-(setq helm-M-x-fuzzy-match t)    ;; Fuzzy match
+(setq helm-locate-fuzzy-match t)   ;; Fuzzy locate files
+(setq helm-M-x-fuzzy-match t)      ;; Fuzzy match
+(setq helm-recentf-fuzzy-match t)  ;; Helm mini
+(setq helm-semantic-fuzzy-match t) ;; Helm semantic
+
+
 
 ;;; Global-map
-;;
-;;
+
 (global-set-key (kbd "M-x")                          'undefined)
 (global-set-key (kbd "M-x")                          'helm-M-x)
 (global-set-key (kbd "M-y")                          'helm-show-kill-ring)
@@ -367,3 +376,11 @@
   (shell-command (format "etags *.%s" (or extension "el")))
   (let ((tags-revert-without-query t))  ; don't query, revert silently
     (visit-tags-table default-directory nil)))
+
+;; Keybindings
+(global-set-key (kbd "C-x w") 'elfeed)
+
+;; RSS elfeed list
+(setq elfeed-feeds
+      '("http://nullprogram.com/feed/"
+        "http://www.terminally-incoherent.com/blog/feed/"))
