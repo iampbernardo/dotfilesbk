@@ -82,13 +82,13 @@
 ;;(global-linum-mode 1)
 
 ;; Set font
-(set-face-attribute 'default nil :family "DejaVu Sans Mono" :height 128)
+(set-face-attribute 'default nil :family "Droid Sans Mono" :height 140)
 (require 'fill-column-indicator)
 (fci-mode)
-(setq fci-rule-column 80)
-
+(setq-default fci-rule-column 80)
+(setq fci-handle-truncate-lines nil)
 ;; Select theme
-(load-theme 'wombat t)
+(load-theme 'monokai t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -143,14 +143,34 @@
 
 ;; Autocomplete
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-auto-complete t)
+(setq company-dabbrev-downcase nil)
+
+
 
 
 ;; ============= MODES ========================================================
 
-(add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
+(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+;; Javscript and relateds
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(defun my-setup-php ()
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
+(add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
+
+(add-hook 'less-css-mode-hook 'my-code-style-setup)
+(add-hook 'php-mode-hook 'my-setup-php)
+(add-hook 'web-mode-hook 'my-code-style-setup)
+
+(defun my-code-style-setup ()
   ;; enable web mode
   (web-mode)
   ;; enable emmet-mode
@@ -166,26 +186,39 @@
   ;; set indentation, can set different indentation level for different code type
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2))
+  (setq web-mode-markup-indent-offset 2)
+
+  ;; Force indentation for html attrs
+  (setq web-mode-attr-indent-offset 2)
+  (setq web-mode-style-padding 1)
+  (setq web-mode-script-padding 1)
+  (setq web-mode-block-padding 0)
+
+  (setq web-mode-block-padding 0)
+  (setq web-mode-block-padding 0)  ;; Auto pairing
+  (setq web-mode-enable-css-colorization t) ;; Css colorization
+
+  (setq web-mode-enable-auto-pairing nil) ;; Auto pairing
+
+)
+
+;; PHP code style configuration
+(defun my-setup-php ()
+  (emmet-mode)
+  ;; Linue numbers
+  (linum-mode)
+  (setq indent-tabs-mode nil)
+  (setq tab-width 4)
+  (setq c-basic-indent 4)
+)
 
 
-;(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
-;(add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
-;(add-to-list 'auto-mode-alist '("\\.php$"  . web-mode))
-;(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
-;; Javscript and relateds
-;(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
-;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-;(add-hook 'js-mode-hook 'js2-minor-mode)
-;(add-hook 'js2-mode-hook 'ac-js2-mode)
-;(add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
-;(add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
-;(setq js2-basic-offset 2)
+(setq js2-basic-offset 2)
 
-;(setq js2-use-font-lock-faces t)
-;(setq js2-highlight-level 3)
+(setq js2-use-font-lock-faces t)
+(setq js2-highlight-level 3)
 
 
 ;; Emmet mode
