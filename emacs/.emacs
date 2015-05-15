@@ -20,6 +20,7 @@
 	php-extras
 	phpunit
 	phpdocumentor
+        solarized-theme
         sublime-themes
         tronesque
 	twittering-mode
@@ -88,7 +89,7 @@
 (setq-default fci-rule-column 80)
 (setq fci-handle-truncate-lines nil)
 ;; Select theme
-(load-theme 'monokai t)
+(load-theme 'solarized-dark t)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -166,7 +167,7 @@
 (add-hook 'js-mode-hook 'my-paredit-nonlisp) ;use with the above function
 (add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
 
-(add-hook 'less-css-mode-hook 'my-code-style-setup)
+;;(add-hook 'less-css-mode-hook 'my-code-style-setup)
 (add-hook 'php-mode-hook 'my-setup-php)
 (add-hook 'web-mode-hook 'my-code-style-setup)
 
