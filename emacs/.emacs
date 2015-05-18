@@ -8,6 +8,7 @@
         elfeed
 	fill-column-indicator
 	flymake
+        flymake-php
         helm
 	helm-git
         helm-git-grep
@@ -86,8 +87,10 @@
 (set-face-attribute 'default nil :family "Droid Sans Mono" :height 140)
 (require 'fill-column-indicator)
 (fci-mode)
+(setq fci-rule-width 1)
 (setq-default fci-rule-column 80)
-(setq fci-handle-truncate-lines nil)
+
+
 ;; Select theme
 (load-theme 'solarized-dark t)
 
@@ -169,6 +172,7 @@
 
 ;;(add-hook 'less-css-mode-hook 'my-code-style-setup)
 (add-hook 'php-mode-hook 'my-setup-php)
+(add-hook 'php-mode-hook 'flymake-php-load)
 (add-hook 'web-mode-hook 'my-code-style-setup)
 
 (defun my-code-style-setup ()
