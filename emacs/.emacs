@@ -89,7 +89,9 @@
 (fci-mode)
 (setq fci-rule-width 1)
 (setq-default fci-rule-column 80)
-
+;; Enable it globally
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;; Select theme
 (load-theme 'solarized-dark t)
@@ -171,8 +173,12 @@
 (add-hook 'js-mode-hook 'esk-paredit-nonlisp) ;for emacs starter kit
 
 ;;(add-hook 'less-css-mode-hook 'my-code-style-setup)
-(add-hook 'php-mode-hook 'my-setup-php)
+
+(add-hook 'php-mode-hook 'php-enable-psr2-coding-style)
 (add-hook 'php-mode-hook 'flymake-php-load)
+(add-hook 'php-mode-hook 'my-setup-php)
+
+
 (add-hook 'web-mode-hook 'my-code-style-setup)
 
 (defun my-code-style-setup ()
@@ -210,15 +216,32 @@
 ;; PHP code style configuration
 (defun my-setup-php ()
   (emmet-mode)
-  ;; Linue numbers
-  (linum-mode)
+  (fci-mode)
   (setq indent-tabs-mode nil)
-  (setq tab-width 4)
-  (setq c-basic-indent 4)
+  ;; line numbers
+  (linum-mode)
+
+(c-add-style
+ "php"
+ '((c-basic-offset . 2)
+   (c-doc-comment-style . javadoc)
+   (c-offsets-alist . ((arglist-close . php-lineup-arglist-close)
+                       (arglist-cont . (first php-lineup-cascaded-calls 0))
+                       (arglist-cont-nonempty . (first php-lineup-cascaded-calls c-lineup-arglist))
+                       (arglist-intro . php-lineup-arglist-intro)
+                       (case-label . +)
+                       (class-open . -)
+                       (comment-intro . 0)
+                       (inlambda . 0)
+                       (inline-open . 0)
+                       (label . +)
+                       (statement-cont . (first php-lineup-cascaded-calls php-lineup-string-cont +))
+                       (substatement-open . 0)
+                       (topmost-intro-cont . (first php-lineup-cascaded-calls +))))))
+
+
+
 )
-
-
-
 
 (setq js2-basic-offset 2)
 
@@ -227,8 +250,8 @@
 
 
 ;; Emmet mode
-;(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-;(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+;;(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 ;; Edit global configs
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
