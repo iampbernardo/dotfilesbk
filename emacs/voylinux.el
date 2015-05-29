@@ -11,7 +11,7 @@
 (require 'package)
 
 ;;; Code:
-(setq my-packages
+(prelude-require-packages
       '(
 ;;	autopair
 ;;	company
@@ -41,24 +41,6 @@
 	web-mode
 ;;      yasnippet
 ))
-
-;;; Repositiories list
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
-
-;;; initialize the packages and create the packages list if not exists
-(require 'eieio)
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-;;; install packages if not exists
-(dolist (pkg my-packages)
-  (when (and (not (package-installed-p pkg))
-             (assoc pkg package-archive-contents))
-    (package-install pkg)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global config
