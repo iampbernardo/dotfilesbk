@@ -9,6 +9,10 @@
 ;; Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'package)
+(add-to-list 'package-archives
+             '("marmalade" .
+                 "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;;; Code:
 (prelude-require-packages
@@ -16,20 +20,22 @@
 ;;	autopair
 ;;	company
 	emmet-mode
+        editorconfig
 ;;	editor-config
 ;;      alead
 	fill-column-indicator
 ;;	flymake
 ;;      flymake-php
 ;;      helm
-	helm-git
-        helm-git-grep
-        helm-ls-git
+;;	helm-git
+        ;;helm-git-grep
+        ;;helm-ls-git
 ;;	js2-mode
 	less-css-mode
 	markdown-mode
 	monokai-theme
-        nyam-mode
+        nyan-mode
+        nyan-prompt
         php-mode
 ;;	php-extras
 ;;	phpunit
@@ -72,6 +78,8 @@
 
 ;;; Some fun in the scroll
 (nyan-mode t)
+(add-hook 'eshell-load-hook 'nyan-prompt-enable)
+
 
 ;;; No scroll bar
 (scroll-bar-mode -1)
@@ -89,7 +97,7 @@
 (global-fci-mode 1)
 
 ;;; Select theme
-(load-theme 'monokai t)
+(load-theme 'zenburn t)
 
 ;;; Highlight current line
 (global-hl-line-mode 1)
@@ -119,6 +127,9 @@
 (add-to-list 'auto-mode-alist '("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+;; By default use editorconfig defined styles
+(load "editorconfig")
+
 (defun php-coding-style ()
   (setq c-basic-indent 2)
   (setq c-basic-offset 2)
@@ -143,9 +154,11 @@
   )
 
 
-(add-hook 'php-mode-hook 'php-coding-style)
-(add-hook 'web-mode-hook 'web-coding-style)
-(add-hook 'less-css-mode-hook 'web-coding-style)
+;;(add-hook 'php-mode-hook 'php-coding-style)
+;;(add-hook 'web-mode-hook 'web-coding-style)
+;;(add-hook 'less-css-mode-hook 'web-coding-style)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;   Custom functions

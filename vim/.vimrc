@@ -60,7 +60,7 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'majutsushi/tagbar'
 
 " Autocomplete
-NeoBundle 'Valloric/YouCompleteMe'
+" NeoBundle 'Valloric/YouCompleteMe'
 
 " Emmet rainbow parenthesis
 NeoBundle 'kien/rainbow_parentheses.vim'
