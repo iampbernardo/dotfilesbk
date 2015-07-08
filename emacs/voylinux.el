@@ -1,5 +1,5 @@
-;;;
-;;    Emacs configuration
+;;; Voylinux emacs --- Emcas config
+;; Emacs configuration
 ;; author: @voylinux
 ;; email: voylinux@gmail.com
 ;; updated_at: 2015-05-29
@@ -17,35 +17,16 @@
 ;;; Code:
 (prelude-require-packages
       '(
-;;	autopair
-;;	company
 	emmet-mode
-        editorconfig
-;;	editor-config
-;;      alead
-	fill-column-indicator
-;;	flymake
-;;      flymake-php
-;;      helm
-;;	helm-git
-        ;;helm-git-grep
-        ;;helm-ls-git
-;;	js2-mode
-	less-css-mode
 	markdown-mode
 	monokai-theme
+	web-mode
+        editorconfig
+        fill-column-indicator
+        less-css-mode
         nyan-mode
         nyan-prompt
         php-mode
-;;	php-extras
-;;	phpunit
-;;	phpdocumentor
-;;      solarized-theme
-;;      sublime-themes
-;;      tronesque
-;;	twittering-mode
-	web-mode
-;;      yasnippet
 ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -97,7 +78,7 @@
 (global-fci-mode 1)
 
 ;;; Select theme
-(load-theme 'zenburn t)
+(load-theme 'monokai t)
 
 ;;; Highlight current line
 (global-hl-line-mode 1)
