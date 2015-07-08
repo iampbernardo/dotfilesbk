@@ -93,9 +93,11 @@
 (require 'linum)
 (global-linum-mode 1)
 
-
-
-
+;;; Windows resize
+(global-set-key (kbd "S-C-h") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-l") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-k") 'enlarge-window)
+(global-set-key (kbd "S-C-j") 'shrink-window)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;  MODES
