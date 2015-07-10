@@ -52,6 +52,9 @@
 ;;; No tabs
 (setq-default indent-tabs-mode nil)
 
+;;; Case insensitive search
+(setq case-fold-search t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GUI and visual configs
@@ -69,7 +72,6 @@
 (set-face-attribute 'default nil :family "Droid Sans Mono" :height 140)
 
 ;;; 80 colums indicator
-(require 'fill-column-indicator)
 (fci-mode)
 (setq fci-rule-width 1)
 (setq-default fci-rule-column 80)
@@ -78,6 +80,8 @@
 (global-fci-mode 1)
 
 ;;; Select theme
+(disable-theme 'zenburn)
+;;(setq prelude-theme 'monokai)
 (load-theme 'monokai t)
 
 ;;; Highlight current line
