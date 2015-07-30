@@ -62,7 +62,12 @@
 
 ;;; Some fun in the scroll
 (nyan-mode t)
+(setq nyan-wavy-trail t)
 (add-hook 'eshell-load-hook 'nyan-prompt-enable)
+
+;;; Pomodoro
+(require 'pomodoro)
+(pomodoro-add-to-mode-line)
 
 
 ;;; No scroll bar
@@ -72,12 +77,12 @@
 (set-face-attribute 'default nil :family "Droid Sans Mono" :height 140)
 
 ;;; 80 colums indicator
-(fci-mode)
-(setq fci-rule-width 1)
-(setq-default fci-rule-column 80)
+;;(fci-mode)
+;;(setq fci-rule-width 1)
+;;(setq-default fci-rule-column 80)
 ;; Enable it globally
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)
+;;(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;;(global-fci-mode 1)
 
 ;;; Select theme
 (disable-theme 'zenburn)
@@ -108,7 +113,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'php-mode)
-(add-to-list 'auto-mode-alist '("\\.hbs$"  . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs$"  . uweb-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
@@ -145,6 +150,16 @@
 ;;(add-hook 'web-mode-hook 'web-coding-style)
 ;;(add-hook 'less-css-mode-hook 'web-coding-style)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Org Mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
