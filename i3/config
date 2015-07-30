@@ -39,12 +39,15 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
+# bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20"
+exec --no-startup-id i3-dmenu
+bindsym $mod+d exec --no-startup-id  --dmenu
+
 # There also is the (new) i3-dmenu-desktop
 # which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu,
 # so you need that installed. bindsym $mod+d
-exec --no-startup-id i3-dmenu-desktop
+#exec --no-startup-id i3-dmenu
 
 # change focus
 bindsym $mod+h focus left
@@ -81,7 +84,7 @@ bindsym $mod+v split h
 bindsym $mod+f fullscreen
 
 
-# using scratchpad 
+# using scratchpad
 # -- Make current window as a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
@@ -244,5 +247,12 @@ exec --no-startup-id feh --bg-scale ~/desktop.jpg
 # Settings
 exec --no-startup-id ~/.i3/autostart
 
+# Dunst
+exec --no-startup-id dunst
+
+
 # Lock screen
 bindsym $MOD+SHIFT+x exec i3lock -c 000000
+
+# Volume
+# TODO: Add keybinding to control system volume
