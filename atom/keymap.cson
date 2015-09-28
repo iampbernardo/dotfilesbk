@@ -23,8 +23,8 @@
 # This file uses CoffeeScript Object Notation (CSON).
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
-'atom-text-editor':
-  'cmd-a': 'unset!'
+'atom-workspace':
+  'ctrl-k ctrl-g': 'git-grep:grep' # default
 
-'atom-text-editor':
-  'cmd-a': 'editor:move-to-first-character-of-line'
+'.platform-linux atom-text-editor':
+  'ctrl-e': 'emmet:expand-abbreviation'
