@@ -2,11 +2,9 @@
 	name = voylinux
 	email = voylinux@gmail.com
 [core]
-	editor = atom
+	editor = atom --wait
 [diff]
     tool =  atom
-[commit]
-	template = ~/.gitmessage.txt
 [color]
 	ui = true
 [push]
