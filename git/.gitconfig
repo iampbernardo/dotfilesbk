@@ -8,9 +8,15 @@
 [color]
 	ui = true
 [push]
-	default = matching
+	default = current
 [alias]
 	st = status
 	co = checkout
 [credential]
 	helper = cache
+[branch]
+	# rebase = true for every branch
+	autosetuprebase = always
+[pull]
+	rebase = true
+	default = current
