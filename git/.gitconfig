@@ -6,7 +6,12 @@
 [diff]
     tool =  atom
 [color]
-	ui = true
+  diff = true
+  status = true
+  branch = true
+  interactive = true
+  ui = true
+  pager = true
 [push]
 	default = current
 [alias]
