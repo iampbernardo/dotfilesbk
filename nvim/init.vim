@@ -1,3 +1,11 @@
+"
+" neovim configuration
+" @author Pablo Bernardo @voylinux
+"
+
+
+
+
 set number
 set expandtab                  " spaces instead of tabs
 set tabstop=2                 " a tab = four spaces
@@ -14,11 +22,20 @@ set colorcolumn=80
 set listchars=tab:▸\ ,eol:¬
 set t_Co=256
 
-" Plugins 
+" Plugins config {{{ =======================================================
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+
+" Music
+Plug 'takac/vim-spotifysearch'
+let g:spotify_country_code = 'ES'
+let g:spotify_prev_key = "<F9>"
+let g:spotify_playpause_key = "<F10>"
+let g:spotify_next_key = "<F11>"
 
 " Layout
 Plug 'Yggdroot/indentLine'
@@ -71,6 +88,8 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 call plug#end()
+
+" }}}
 
 set number          " Show line numbers
 set showcmd         " Show command in bottom bar
@@ -142,7 +161,6 @@ nnoremap <space> za
  
 " }}}
 
-" Plugins config {{{ =======================================================
 
 " Enable airline
 set laststatus=2
