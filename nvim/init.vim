@@ -3,8 +3,6 @@
 " @author Pablo Bernardo @voylinux
 "
 
-
-
 set number
 set expandtab                  " spaces instead of tabs
 set tabstop=2                 " a tab = four spaces
@@ -81,6 +79,7 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 " Colorschemes
 Plug 'goatslacker/mango.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'tomasr/molokai'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
@@ -112,6 +111,11 @@ let g:ctrlp_working_path_mode = 'r'
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
 
+" Nyaovim pluggins
+Plug 'rhysd/nyaovim-markdown-preview'
+g:markdown_preview_auto
+
+
 " Autocomplete
 
 Plug 'Shougo/deoplete.nvim'
@@ -128,10 +132,10 @@ call plug#end()
 
 set number          " Show line numbers
 set showcmd         " Show command in bottom bar
-set cursorline        " Show current cursor line
-set wildmenu            " visual autocompletefor command menu
-set lazyredraw          " redraw only when we need to
-set showmatch           " highlight matching [{()}]
+set cursorline      " Show current cursor line
+set wildmenu        " visual autocompletefor command menu
+set lazyredraw      " redraw only when we need to
+set showmatch       " highlight matching [{()}]
 
 set noswapfile
 
@@ -208,5 +212,5 @@ set background=dark
 
 
 
-color seoul256
+color molokai
 
