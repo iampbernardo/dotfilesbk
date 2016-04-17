@@ -2,6 +2,7 @@
 " neovim configuration
 " @author Pablo Bernardo @voylinux
 "
+"
 
 set number
 set expandtab                  " spaces instead of tabs
@@ -40,6 +41,7 @@ let g:indentLine_enable = 1
 	
 
 " Git help
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 
 "Web development
@@ -209,7 +211,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
 set background=dark
-
 
 
 color molokai
