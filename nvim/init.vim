@@ -35,11 +35,9 @@ let g:spotify_prev_key = "<F9>"
 let g:spotify_playpause_key = "<F10>"
 let g:spotify_next_key = "<F11>"
 
-
 " Layout
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enable = 1
-	
 
 " Git help
 Plug 'tpope/vim-fugitive'
@@ -51,8 +49,6 @@ let g:deoplete#enable_at_startup = 1
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-
-
 " omnifuncs
 augroup omnifuncs
   autocmd!
@@ -62,16 +58,20 @@ augroup omnifuncs
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
+
 " tern
 if exists('g:plugs["tern_for_vim"]')
   let g:tern_show_argument_hints = 'on_hold'
   let g:tern_show_signature_in_pum = 1
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
+
 " deoplete tab-complete
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-" " ,<Tab> for regular tab
+
+" ,<Tab> for regular tab
 inoremap <Leader><Tab> <Space><Space>
+
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
@@ -79,6 +79,9 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 Plug 'goatslacker/mango.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'tomasr/molokai'
+
+" Editor configuration
+Plug 'editorconfig/editorconfig-vim'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
@@ -96,6 +99,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 Plug 'ctrlpvim/ctrlp.vim'
+
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn|node_modules|bower_components)|\_site)$',
@@ -105,7 +109,7 @@ let g:ctrlp_custom_ignore = {
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'ra'
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
