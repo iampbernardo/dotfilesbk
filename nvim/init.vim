@@ -19,6 +19,7 @@ set colorcolumn=80
 set listchars=tab:▸\ ,eol:¬
 set t_Co=256
 
+
 " Plugins config {{{ =======================================================
 
 call plug#begin('~/.vim/plugged')
@@ -34,6 +35,7 @@ let g:spotify_prev_key = "<F9>"
 let g:spotify_playpause_key = "<F10>"
 let g:spotify_next_key = "<F11>"
 
+
 " Layout
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enable = 1
@@ -46,9 +48,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -207,6 +206,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 " Enable extensions
 let g:airline#extensions#tabline#enabled = 1
+
 let g:airline_theme='powerlineish'
 set background=dark
 
