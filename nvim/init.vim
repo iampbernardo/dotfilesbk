@@ -113,6 +113,15 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
+let g:ctrlp_extensions = ['tag']
+
+" Ctags
+Plug 'szw/vim-tags'
+let g:vim_tags_auto_generate = 1
+
+" Tagbar
+Plug 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
 
 " Nyaovim pluggins
 Plug 'rhysd/nyaovim-markdown-preview'

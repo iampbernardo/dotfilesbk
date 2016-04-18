@@ -6,6 +6,7 @@
 --exclude=doc
 --exclude=deps
 --exclude=cache
+--exclude=lib
 --exclude=node_modules
 --exclude=bower_components
 --languages=javascript,sql,php,python
