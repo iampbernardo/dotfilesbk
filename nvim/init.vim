@@ -79,6 +79,7 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 Plug 'goatslacker/mango.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'tomasr/molokai'
+Plug 'herrbischoff/cobalt2.vim'
 
 " Editor configuration
 Plug 'editorconfig/editorconfig-vim'
