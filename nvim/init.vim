@@ -212,6 +212,14 @@ nnoremap <space> za
  
 " }}}
 
+" File extensions {{{ ========================================================
+
+au BufNewFile,BufRead *.js.php set filetype=javascript
+
+
+
+" }}}
+
 
 " Enable airline
 set laststatus=2

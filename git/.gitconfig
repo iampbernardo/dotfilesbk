@@ -2,9 +2,10 @@
 	name = voylinux
 	email = voylinux@gmail.com
 [core]
-	editor = atom --wait
+	editor = nvim 
+	excludesfile = /home/voylinux/.gitignore_global
 [diff]
-    tool =  atom
+    tool =  nvim
 [color]
   diff = true
   status = true
