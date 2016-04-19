@@ -82,11 +82,14 @@ Plug 'tomasr/molokai'
 
 " Editor configuration
 Plug 'editorconfig/editorconfig-vim'
+Plug 'mhinz/vim-startify'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
+
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
 
+let NERDTreeShowBookmarks=1
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -103,17 +106,28 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn|node_modules|bower_components)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \ 'file': '\v\.(exe|so|dll|.atom|png|jpg|jpeg)$',
 \}
 
+nmap <leader>p :CtrlP<cr>
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'rw'
 
 " Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
-let g:ctrlp_extensions = ['tag']
+let g:ctrlp_extensions = ['tag' , 'buffertag']
+let g:ctrlp_match_window = 'top,order:btt,min:1,max:5,results:20'
+let g:ctrlp_show_hidden = 1
+
+" Use git to search when inside a repository
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 
 " Ctags
 Plug 'szw/vim-tags'
@@ -216,11 +230,15 @@ nnoremap <space> za
 
 au BufNewFile,BufRead *.js.php set filetype=javascript
 
-
-
 " }}}
 
+" Buffers navigation {{{ =====================================================
 
+nnoremap <C-l> :bnext <cr>
+nnoremap <C-h> :bprevious <cr>
+
+" }}}
+"
 " Enable airline
 set laststatus=2
 " Enable powerline fonts
