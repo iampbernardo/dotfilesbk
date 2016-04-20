@@ -42,9 +42,10 @@ let g:indentLine_enable = 1
 " Git help
 Plug 'tpope/vim-fugitive'
 
-"Web development
+" Web development
 Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'wookiehangover/jshint.vim'
 let g:deoplete#enable_at_startup = 1
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -170,6 +171,7 @@ set noswapfile
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+set smartcase           " vim will detect your searching of case sentivie or not
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
