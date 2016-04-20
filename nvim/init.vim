@@ -27,6 +27,9 @@ Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Enviroment
+Plug 'sheerun/vim-polyglot'
+
 
 " Music
 Plug 'takac/vim-spotifysearch'
@@ -42,10 +45,26 @@ let g:indentLine_enable = 1
 " Git help
 Plug 'tpope/vim-fugitive'
 
+" Snippets
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " Web development
 Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'wookiehangover/jshint.vim'
+Plug 'skammer/vim-css-color'
 let g:deoplete#enable_at_startup = 1
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -154,6 +173,7 @@ let g:deoplete#enable_at_startup = 1
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
 call plug#end()
 
 " }}}
