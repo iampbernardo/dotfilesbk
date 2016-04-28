@@ -26,17 +26,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 
 " Enviroment
 Plug 'sheerun/vim-polyglot'
-
-
-" Music
-Plug 'takac/vim-spotifysearch'
-let g:spotify_country_code = 'ES'
-let g:spotify_prev_key = "<F9>"
-let g:spotify_playpause_key = "<F10>"
-let g:spotify_next_key = "<F11>"
+" let g:polyglot_disabled = ['php']
 
 " Layout
 Plug 'Yggdroot/indentLine'
@@ -63,10 +57,13 @@ let g:UltiSnipsEditSplit="vertical"
 " Web development
 Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'wookiehangover/jshint.vim'
-Plug 'skammer/vim-css-color'
+" Plug 'wookiehangover/jshint.vim'
+" Plug 'skammer/vim-css-color'
+
+Plug 'Shougo/deoplete.nvim'
+" Use deoplete.
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " omnifuncs
@@ -87,19 +84,20 @@ if exists('g:plugs["tern_for_vim"]')
 endif
 
 " deoplete tab-complete
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+" inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
 " ,<Tab> for regular tab
-inoremap <Leader><Tab> <Space><Space>
+" inoremap <Leader><Tab> <Space><Space>
+
 
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 " Colorschemes
-Plug 'goatslacker/mango.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'tomasr/molokai'
-Plug 'herrbischoff/cobalt2.vim'
+Plug 'altercation/vim-colors-solarized'
+let g:solarized_termcolors=256
 
 " Editor configuration
 Plug 'editorconfig/editorconfig-vim'
@@ -122,6 +120,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Setup some default ignores
@@ -137,7 +136,7 @@ nmap <leader>p :CtrlP<cr>
 let g:ctrlp_working_path_mode = 'rw'
 
 " Use a leader instead of the actual named binding
-let g:ctrlp_extensions = ['tag' , 'buffertag']
+let g:ctrlp_extensions = ['buffertag']
 let g:ctrlp_match_window = 'top,order:btt,min:1,max:5,results:20'
 let g:ctrlp_show_hidden = 1
 
@@ -164,10 +163,6 @@ g:markdown_preview_auto
 
 
 " Autocomplete
-
-Plug 'Shougo/deoplete.nvim'
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
@@ -269,10 +264,10 @@ let g:airline_powerline_fonts = 1
 " Enable extensions
 let g:airline#extensions#tabline#enabled = 1
 
-let g:airline_theme='powerlineish'
+let g:airline_theme='gruvbox'
 set background=dark
 
 
 
-color molokai
+color gruvbox
 

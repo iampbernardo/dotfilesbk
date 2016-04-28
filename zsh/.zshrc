@@ -53,6 +53,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+#
+
+export TERM=xterm-256color
 
 # # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -61,7 +64,7 @@ else
   export EDITOR='nvim'
 fi
 
-export EDITOR=atom
+export EDITOR=nvim
 
 
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
@@ -92,6 +95,6 @@ export PIP_VIRTUALENV_BASE=~/.virtualenvs
 export LUA_PPREFIX=/usr/bin/lua
 
 alias tmux='tmux -2'
-alias nvim='nyaovim'
+alias vim='nvim'
 # Alias
 source $HOME/.aliases
