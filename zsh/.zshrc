@@ -75,6 +75,10 @@ else
    source /usr/bin/virtualenvwrapper.sh
 fi
 
+# Load custom config
+autoload bashcompinit
+bashcompinit
+
 
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
@@ -93,6 +97,10 @@ export WORKON_HOME=~/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=~/.virtualenvs
 export LUA_PPREFIX=/usr/bin/lua
+
+for completion in $HOME/.completions/*;do
+  source "$completion";
+done;
 
 alias tmux='tmux -2'
 alias vim='nvim'

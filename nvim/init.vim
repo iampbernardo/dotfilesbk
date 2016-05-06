@@ -4,11 +4,12 @@
 "
 
 set number
-set expandtab                  " spaces instead of tabs
+set expandtab                 " spaces instead of tabs
 set tabstop=2                 " a tab = four spaces
-set shiftwidth=2               " number of spaces for auto-indent
-set softtabstop=2              " a soft-tab of four spaces
-set autoindent                 " set on the auto-indent
+set shiftwidth=2              " number of spaces for auto-indent
+set softtabstop=2             " a soft-tab of four spaces
+set autoindent                " set on the auto-indent
+set nowrap                    " no wrap lines
   
 " Tabs are spaces
 let mapleader=","
@@ -57,6 +58,7 @@ let g:UltiSnipsEditSplit="vertical"
 " Web development
 Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'sickill/vim-pasta'
 " Plug 'wookiehangover/jshint.vim'
 " Plug 'skammer/vim-css-color'
 
