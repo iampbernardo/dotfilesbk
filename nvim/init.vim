@@ -18,7 +18,8 @@ set colorcolumn=80
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
-set t_Co=256
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
 " Plugins config {{{ =======================================================
@@ -160,8 +161,8 @@ Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 " Nyaovim pluggins
-Plug 'rhysd/nyaovim-markdown-preview'
-g:markdown_preview_auto
+"Plug 'rhysd/nyaovim-markdown-preview'
+" g:markdown_preview_auto
 
 
 " Autocomplete
@@ -249,6 +250,8 @@ nnoremap <space> za
 " File extensions {{{ ========================================================
 
 au BufNewFile,BufRead *.js.php set filetype=javascript
+
+autocmd FileType markdown set nonumber foldcolum=3
 
 " }}}
 
