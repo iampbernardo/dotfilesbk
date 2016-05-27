@@ -57,8 +57,8 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Web development
 Plug 'mattn/emmet-vim'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'sickill/vim-pasta'
 " Plug 'wookiehangover/jshint.vim'
 " Plug 'skammer/vim-css-color'
 
