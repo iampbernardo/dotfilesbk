@@ -10,6 +10,7 @@ set shiftwidth=2              " number of spaces for auto-indent
 set softtabstop=2             " a soft-tab of four spaces
 set autoindent                " set on the auto-indent
 set nowrap                    " no wrap lines
+set clipboard+=unnamedplus    " set clipboard
   
 " Tabs are spaces
 let mapleader=","
@@ -104,7 +105,7 @@ let g:solarized_termcolors=256
 
 " Editor configuration
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
@@ -254,6 +255,20 @@ au BufNewFile,BufRead *.js.php set filetype=javascript
 autocmd FileType markdown set nonumber foldcolum=3
 
 " }}}
+"
+" Terminal configuration {{{ ========================================================
+tnoremap <Esc> <C-\><C-n>         " Use Esc to exit terminal emulator
+                                  " Use alt + key to navigate betwen windows
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" }}}
 
 " Buffers navigation {{{ =====================================================
 
@@ -275,4 +290,5 @@ set background=dark
 
 
 color gruvbox
+
 
