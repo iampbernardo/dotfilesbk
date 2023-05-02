@@ -1,9 +1,8 @@
 [user]
-	name = voylinux
-	email = voylinux@gmail.com
+	name = Pablo Bernardo
+	email = iam@pbernardo.com
 [core]
 	editor = nvim 
-	excludesfile = /home/voylinux/.gitignore_global
 [diff]
     tool =  nvim
 [color]
@@ -13,6 +12,8 @@
   interactive = true
   ui = true
   pager = true
+[browser]
+  arc
 [push]
 	default = current
 [alias]
@@ -30,3 +31,5 @@
 	tool = vimdiff
 [mergetool]
 	path = nvim
+[github]
+	user = iampbernardo
