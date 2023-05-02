@@ -3,3 +3,6 @@
 # Add homebrew PATH
 export PATH=/opt/homebrew/bin:$PATH%
 
+# Alias for Neovim
+alias vim="nvim"
+
